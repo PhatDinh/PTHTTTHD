@@ -1,0 +1,27 @@
+
+
+.homepage{
+    text-align: center;
+    font-family: 'Roboto';
+    background: #E0E0E0;
+}
+
+.homepage-title{
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 33px;
+}
+
+.homepage-content{
+    height: 893px;
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-items: center;
+    margin-left: auto;
+    margin-right: auto;
+
+}
