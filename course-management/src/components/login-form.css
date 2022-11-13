@@ -10,6 +10,7 @@
     align-items: center;
     font-size: 0.75em;
     font-family: sans-serif;
+    
 }
 
 .container{
@@ -22,11 +23,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    
 }
 
 
 .login-btn {
+    
     width: 90%;
     height: 3em;
     background-color: rgb(32, 177, 255);
@@ -36,23 +37,49 @@
     transition: 0.5s;
     border-radius: 0.25em;
     cursor: pointer;
+    margin-top: 15px;
 }
+
+
+.input-container i{
+    position: absolute;
+    
+}
+
+.input-container{
+    width: 90%;
+    padding: 10px;
+    
+}
+
+.icon { 
+    padding: 10px; 
+    color: green; 
+    min-width: 50px; 
+    text-align: center; 
+} 
 
 input {
     border: none;
     background-color: white;
-    width: 80%;
     border-radius: 0.25em;
-    text-align: left;
-    padding: 2em;
+    /**padding: 2em;
+    **/
     font-size: 0.8em;
-    margin-bottom: 30px;
     border: 1px solid #d8d8da;
+    width: 100%; 
+
+    padding: 10px; 
+    text-align: center; 
+    box-sizing: border-box;
+
 }
 
 input:focus {
     outline-color: rgb(32, 177, 255);
 }
+
+
 
 
 
