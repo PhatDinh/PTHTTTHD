@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
+
+//Pages
 import App from './App';
 import Homepage from './components/Homepage/Homepage';
+import ProfilePage from './components/ProfilePage/ProfilePage';
 
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -13,6 +17,7 @@ root.render(
       <Routes>
         <Route path="/" element={<App />}/>
         <Route path="/Homepage" element={<Homepage/>}/>
+        <Route path="/Profile" element={<ProfilePage/>}/>
       </Routes>
     </BrowserRouter>
 );

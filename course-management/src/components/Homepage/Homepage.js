@@ -19,6 +19,7 @@ const Homepage= () => {
                 <CourseCard/>
                 <CourseCard/>
                 <CourseCard/>
+                <CourseCard/>
             </div>
         </div>
     )
