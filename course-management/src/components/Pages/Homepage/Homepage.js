@@ -1,7 +1,7 @@
 
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../Navbar/Navbar";
 import './Homepage.css';
-import CourseCard from "../CourseCard/CourseCard";
+import CourseCard from "../../CourseCard/CourseCard";
 
 
 

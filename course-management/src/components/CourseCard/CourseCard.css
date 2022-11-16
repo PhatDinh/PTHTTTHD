@@ -60,3 +60,20 @@
     line-height: 16px;
     color: rgba(85, 85, 85, 1);
 }
+
+
+.icon-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background: none;
+    box-shadow: none;
+    justify-content: space-between;
+    align-items: start;
+    height: fit-content;
+}
+
+.icon-container i{
+    margin: 0;
+    padding: 0;
+}

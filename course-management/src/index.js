@@ -5,11 +5,13 @@ import './index.css';
 
 //Pages
 import App from './App';
-import Homepage from './components/Homepage/Homepage';
-import ProfilePage from './components/ProfilePage/ProfilePage';
+import Homepage from './components/Pages/Homepage/Homepage';
+import ProfilePage from './components/Pages/ProfilePage/ProfilePage';
 
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

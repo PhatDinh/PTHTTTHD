@@ -1,4 +1,4 @@
-import CourseCard from "../CourseCard/CourseCard";
+import CourseCard from "../../CourseCard/CourseCard";
 
 
 
