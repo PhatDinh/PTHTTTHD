@@ -10,6 +10,7 @@ import ProfilePage from './components/Pages/ProfilePage/ProfilePage';
 
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import AddCoursePage from './components/Pages/CreateCourse/AddCoursePage';
 
 
 
@@ -20,6 +21,7 @@ root.render(
         <Route path="/" element={<App />}/>
         <Route path="/Homepage" element={<Homepage/>}/>
         <Route path="/Profile" element={<ProfilePage/>}/>
+        <Route path="/AddCourse" element={<AddCoursePage/>}/>
       </Routes>
     </BrowserRouter>
 );
