@@ -1,6 +1,4 @@
-
-
-.card{
+.card {
     position: relative;
     width: 348px;
     height: 156px;
@@ -13,8 +11,14 @@
     min-width: 33%;
 }
 
-.card-content{
-    background:  #0D68BB;
+.card:hover,
+.homepage-btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.card-content {
+    background: #0D68BB;
     margin: 0;
     height: 100%;
     border-radius: 10px;
@@ -22,29 +26,29 @@
     box-sizing: border-box;
 }
 
-.card-content p{
+.card-content p {
     margin: 0;
 }
 
-.card-header{
+.card-header {
     font-weight: 700;
     font-size: 20px;
     line-height: 23px;
     margin: 0;
 }
 
-.card h4{
+.card h4 {
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
     margin: 3px 0;
 }
 
-.italic{
+.italic {
     font-style: italic;
 }
 
-.card-remain{
+.card-remain {
     position: absolute;
     text-align: right;
     background: white;
@@ -62,7 +66,7 @@
 }
 
 
-.icon-container{
+.icon-container {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -73,7 +77,7 @@
     height: fit-content;
 }
 
-.icon-container i{
+.icon-container i {
     margin: 0;
     padding: 0;
 }
