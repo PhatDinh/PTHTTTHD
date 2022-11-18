@@ -1,0 +1,101 @@
+.CourseDetail-container{
+    background: #c0deda;
+    min-height: 100vh; 
+    font-family: Georgia, serif;
+      
+}
+.info-header{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.title{
+    margin-left:20px;
+    margin-bottom:10px;
+    font-style: italic;
+    font-size:20px;
+}
+.detailed-container{
+  margin: auto;
+  width: 50%;
+  padding: 12px;
+}
+.detailed-container .infoCourse{
+    border-radius: 30px;
+    background-color:white;
+    padding: 5px 10px 20px 30px;
+}
+.detailed-container .infoCourse .infoCourse-content{
+    padding-top:5px;
+}
+.detailed-container .infoCourse .info-btn button {
+    margin-right:20px;
+    background: #32CD32;
+    border-radius:10px;
+    font-size:15px;
+    color:white;
+    padding:6px 10px 6px 10px;
+    border:2px solid white;
+}
+.detailed-container .infoCourse .info-btn button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+.attend-btn{
+    text-align:center;
+    margin-top:20px;
+    margin-left:1000px;
+}
+.attend-btn button{
+    background: #32CD32;
+    border-radius:30px;
+    font-size:20px;
+    color:white;
+    padding:15px 20px 15px 20px;
+    border:2px solid white;
+}
+.attend-btn button:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+.infoCourse-lst-Trainee{
+    border-radius: 15px;
+    background-color:white;
+    padding: 3px 3px 3px 20px;
+}
+.detailed-container1{
+    margin: auto;
+    width: 50%;
+    padding: 1px;
+  }
+  .fa{
+    float:right;
+    padding-right:20px;
+  }
+.infoCourse-lst-Trainee a{ 
+    text-decoration:none;
+    color:black;
+}
+.infoCourse-lst-Trainee a:hover{ 
+    color:#c0deda;
+}
+.detailed-container-trainer{
+    margin: auto;
+    width: 50%;
+    margin-top: 80px;
+    position: relative;
+}
+.detailed-container-trainer .infoCourse{
+    border-radius: 30px;
+    background-color:white;
+    padding: 5px 10px 20px 30px;
+}
+.detailed-container-trainer .infoCourse .infoCourse-content{
+    padding-top:5px;
+}
+.avt{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    margin-left:550px;
+    margin-top:-100px;
+    border-radius: 120px;
+}

@@ -7,6 +7,7 @@ import './index.css';
 import App from './App';
 import Homepage from './components/Pages/Homepage/Homepage';
 import ProfilePage from './components/Pages/ProfilePage/ProfilePage';
+import CourseDetail from './components/Pages/CourseDetail/CourseDetail';
 
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -22,6 +23,7 @@ root.render(
         <Route path="/Homepage" element={<Homepage/>}/>
         <Route path="/Profile" element={<ProfilePage/>}/>
         <Route path="/AddCourse" element={<AddCoursePage/>}/>
+        <Route path ="/CourseDetail" element = {<CourseDetail/>}/>
       </Routes>
     </BrowserRouter>
 );
