@@ -29,17 +29,17 @@ function AddCoursePage(props) {
 
             <div className="title-add-course">
                 <label for="fdes">Description</label><br></br>
-                <textarea className="field" id="fdes" name="fdes"placeholder="Description"></textarea>
+                <textarea className="field" id="fdes" name="fdes" placeholder="Description"></textarea>
             </div>
 
             <div className="title-add-course">
                 <label for="fskill">Training skill</label><br></br>
-                <textarea className="field" id="fskill" name="fskill"placeholder="Training skill"></textarea>
+                <textarea className="field" id="fskill" name="fskill" placeholder="Training skill"></textarea>
             </div>
 
             <div className="title-add-course">
                 <label for="ftar">Target</label><br></br>
-                <textarea className="field" id="ftar" name="ftar"placeholder="Target"></textarea>
+                <textarea className="field" id="ftar" name="ftar" placeholder="Target"></textarea>
             </div>
         </>
     )
