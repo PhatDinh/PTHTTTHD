@@ -1,0 +1,49 @@
+* {
+    font-family: Georgia, serif;
+}
+
+.title-add-course {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+}
+
+input[type="text"] {
+    text-align: left;
+    border-radius: 10px;
+}
+
+
+label {
+    font-size: 20px;
+}
+
+.title-container {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+}
+
+.title-container .label1 label {
+    padding-right: 330px;
+}
+
+.title-add-course1 {
+
+    display: flex;
+
+}
+/* input[class*="typeDes"]  {
+    line-height:200px;
+}
+input[class*="typeDes"]::placeholder{
+    margin-top:-100px;
+} */
+.field{
+    margin: auto;
+    width: 98%;
+    height:200px;
+    font-size:18px;
+    padding:10px;
+    border-radius: 5px;
+}

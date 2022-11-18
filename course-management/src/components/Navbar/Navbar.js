@@ -16,7 +16,6 @@ function Navbar(props){
              <p>{props.title}</p>
             <img className ='avatar' src={avatar} onClick={handleClick}/>
         </div>
-           
     )
 }
 
