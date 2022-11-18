@@ -1,5 +1,18 @@
 * {
     font-family: Georgia, serif;
+
+}
+
+h4 {
+    text-align: center;
+    margin-left: -680px;
+    font-weight: 100;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.container-addCourse {
+    background: #c0deda;
 }
 
 .title-add-course {
@@ -33,17 +46,74 @@ label {
     display: flex;
 
 }
+
 /* input[class*="typeDes"]  {
     line-height:200px;
 }
 input[class*="typeDes"]::placeholder{
     margin-top:-100px;
 } */
-.field{
+.field {
     margin: auto;
     width: 98%;
-    height:200px;
-    font-size:18px;
-    padding:10px;
+    height: 200px;
+    font-size: 18px;
+    padding: 10px;
     border-radius: 5px;
+}
+
+.title-add-course2 {
+    margin: auto;
+    width: 50%;
+    background-color: white;
+    border: 1px solid rgb(161, 144, 144);
+    padding: 1px;
+}
+
+.title-add-course2 a {
+    text-decoration: none;
+    color: black;
+}
+
+.title-add-course2 a:hover {
+    opacity: 0.7;
+    color: aquamarine;
+}
+
+.title-add-course .add-btn {
+    padding: 10px 15px 10px 15px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.title-add-course-btn {
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    height: 200px;
+    text-align: right;
+}
+
+.title-add-course-btn button {
+    margin-left: 20px;
+    padding: 8px 35px 8px 35px;
+    cursor: pointer;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+.cancel-btn {
+    background-color: rgb(195, 192, 192);
+    color: black;
+}
+
+.create-btn {
+    background-color: rgb(0, 89, 255);
+    color: white;
+}
+
+.title-add-course-btn button:hover {
+    opacity: 0.7;
 }

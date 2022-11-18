@@ -5,7 +5,8 @@ import NavAssess from '../../NavAssess/NavAssess';
 
 function AddCoursePage(props) {
     return (
-        <>
+
+        <div className="container-addCourse">
             <div>
                 <Navbar title="CREATE COURSE" />
                 <NavAssess />
@@ -41,7 +42,40 @@ function AddCoursePage(props) {
                 <label for="ftar">Target</label><br></br>
                 <textarea className="field" id="ftar" name="ftar" placeholder="Target"></textarea>
             </div>
-        </>
+
+            <h4>Sessions</h4>
+            <div className="title-add-course2">
+                <p>Centertric
+                    <a href="#" className="fa fa-trash"></a>
+                    <a href="#" className="fa fa-pencil"></a>
+                </p>
+
+            </div>
+            <div className="title-add-course2">
+                <p>Quantumalia
+                    <a href="#" className="fa fa-trash"></a>
+                    <a href="#" className="fa fa-pencil"></a>
+                </p>
+
+            </div>
+            <div className="title-add-course2">
+                <p>EFTL
+                    <a href="#" className="fa fa-trash"></a>
+                    <a href="#" className="fa fa-pencil"></a>
+                </p>
+
+            </div>
+
+            <div className="title-add-course">
+                <button className="add-btn">+</button>
+            </div>
+
+            <div className="title-add-course-btn">
+                <button className="cancel-btn">Cancel</button>
+                <button className="create-btn">Create</button>
+            </div>
+        </div>
+
     )
 }
 export default AddCoursePage;
