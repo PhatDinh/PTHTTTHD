@@ -10,6 +10,11 @@ function DocumentPage(){
             <Navbar title='DRIVE'/>
             <div className="document-content">
                 <DocumentCard title='Resume.pdf'/>
+                <DocumentCard title='Resume.pdf'/>
+                <DocumentCard title='Resume.pdf'/>
+                <DocumentCard title='Resume.pdf'/>
+                <DocumentCard title='Resume.pdf'/>
+                <DocumentCard title='Resume.pdf'/>
             </div>
         </div>
     )
