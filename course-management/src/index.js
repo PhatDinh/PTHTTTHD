@@ -8,11 +8,11 @@ import App from './App';
 import Homepage from './components/Pages/Homepage/Homepage';
 import ProfilePage from './components/Pages/ProfilePage/ProfilePage';
 import CourseDetail from './components/Pages/CourseDetail/CourseDetail';
+import CreateSession from './components/Pages/CreateSession/CreateSession';
 
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddCoursePage from './components/Pages/CreateCourse/AddCoursePage';
-
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -24,6 +24,7 @@ root.render(
         <Route path="/Profile" element={<ProfilePage/>}/>
         <Route path="/AddCourse" element={<AddCoursePage/>}/>
         <Route path ="/CourseDetail" element = {<CourseDetail/>}/>
+        <Route path ="/AddSession" element = {<CreateSession/>}/>
       </Routes>
     </BrowserRouter>
 );

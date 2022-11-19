@@ -1,0 +1,17 @@
+.session-container{
+    background: #c0deda;
+}
+.session-container .add-session{
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+}
+.add-session .field{
+    margin: auto;
+    width: 98%;
+    height: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
