@@ -1,13 +1,14 @@
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faFile} from '@fortawesome/free-solid-svg-icons'
 import './DocumentCard.css'
-
 
 function DocumentCard(props){
     return(
         <div className='document-card'>
-            <i className="fa-light fa-file"></i>
+            <i class="fa-light fa-file"></i>
             <div>
                 <p>{props.title}</p>
-                <i className="fa fa-ellipsis-vertical"></i>
+                <FontAwesomeIcon icon={faFile} />
             </div>
         </div>
     )
