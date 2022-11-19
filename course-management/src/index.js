@@ -12,6 +12,7 @@ import CourseDetail from './components/Pages/CourseDetail/CourseDetail';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddCoursePage from './components/Pages/CreateCourse/AddCoursePage';
+import DocumentPage from './components/Pages/DocumentPage/DocumentPage';
 
 
 
@@ -24,6 +25,7 @@ root.render(
         <Route path="/Profile" element={<ProfilePage/>}/>
         <Route path="/AddCourse" element={<AddCoursePage/>}/>
         <Route path ="/CourseDetail" element = {<CourseDetail/>}/>
+        <Route path="/Document" element={<DocumentPage/>}/>
       </Routes>
     </BrowserRouter>
 );
