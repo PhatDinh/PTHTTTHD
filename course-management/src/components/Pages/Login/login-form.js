@@ -21,12 +21,12 @@ const LoginForm = () => {
                 <h1>LOGIN</h1>
                 <div className='input-container'>
                     <i className="fa fa-user icon"></i>
-                    <input type="text" placeholder="Username" />
+                    <input type="text" placeholder="Username" className='input-username'/>
                 </div>
 
                 <div className='input-container'>
                     <i className="fa fa-key icon"></i>
-                    <input type="password" placeholder="Password" />
+                    <input type="password" placeholder="Password" className='input-password' />
                 </div>
                 <button onClick={handleLogin} className="login-btn" >LOGIN</button>
             </div>

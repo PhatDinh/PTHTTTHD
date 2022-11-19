@@ -1,8 +1,17 @@
 import Navbar from "../../Navbar/Navbar";
 import './CourseDetail.css';
 import avatar from '../../../images/fat.jpg';
+import { useNavigate } from "react-router-dom";
 
 const CourseDetail = () => {
+
+
+    const navigator = useNavigate();
+
+    function handleClick(){
+        navigator('/Document')
+    }
+
     return (
         <div className="CourseDetail-container">
             <Navbar title={'COURSE DETAIL'} />

@@ -60,6 +60,10 @@
     text-align: center; 
 } 
 
+.input-username{
+    text-align: center;
+}
+
 input {
     border: none;
     background-color: white;
