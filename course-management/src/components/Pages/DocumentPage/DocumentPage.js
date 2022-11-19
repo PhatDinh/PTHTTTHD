@@ -9,7 +9,7 @@ function DocumentPage(){
         <div>
             <Navbar title='DRIVE'/>
             <div className="document-content">
-                <DocumentCard name='Resume.pdf'/>
+                <DocumentCard title='Resume.pdf'/>
             </div>
         </div>
     )

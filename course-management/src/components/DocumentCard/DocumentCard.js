@@ -3,11 +3,11 @@ import './DocumentCard.css'
 
 function DocumentCard(props){
     return(
-        <div className=''>
-            <img></img>
+        <div className='document-card'>
+            <i className="fa-light fa-file"></i>
             <div>
-                <p>props.name</p>
-                <i className="fa-solid fa-ellipsis-vertical"></i>
+                <p>{props.title}</p>
+                <i className="fa fa-ellipsis-vertical"></i>
             </div>
         </div>
     )

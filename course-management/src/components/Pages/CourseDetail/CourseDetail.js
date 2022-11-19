@@ -30,7 +30,7 @@ const CourseDetail = () => {
                         <p>Information: create a simple netcentric</p>
                     </div>
                     <div className="info-btn">
-                        <button>Documents</button>
+                        <button onClick={handleClick}>Documents</button>
                         <button>Assignments</button>
                     </div>
                 </div>
