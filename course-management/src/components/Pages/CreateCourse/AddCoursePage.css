@@ -3,7 +3,7 @@
 
 }
 
-h4 {
+.container-addCourse h4 {
     text-align: center;
     margin-left: -680px;
     font-weight: 100;
@@ -21,7 +21,7 @@ h4 {
     padding: 20px;
 }
 
-input[type="text"] {
+input[class*="container-addCourse"] {
     text-align: left;
     border-radius: 10px;
 }
