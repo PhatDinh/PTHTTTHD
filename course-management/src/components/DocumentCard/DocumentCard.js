@@ -8,7 +8,7 @@ function DocumentCard(props){
             <i class="fa-light fa-file"></i>
             <div>
                 <p>{props.title}</p>
-                <FontAwesomeIcon icon={faFile} />
+                <FontAwesomeIcon icon={[fab]} />
             </div>
         </div>
     )

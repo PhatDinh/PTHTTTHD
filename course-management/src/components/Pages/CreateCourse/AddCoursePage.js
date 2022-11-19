@@ -1,12 +1,21 @@
 import Navbar from "../../Navbar/Navbar";
 import './AddCoursePage.css';
 import NavAssess from '../../NavAssess/NavAssess';
-
+import { useNavigate } from "react-router-dom";
+import ScrollToTop from '../../ScrollToTop';
 
 function AddCoursePage(props) {
-    return (
 
+    const navigate = useNavigate(); 
+
+    function handleClick(url)
+    {
+        navigate(url);
+        console.log('click');
+    }
+    return (
         <div className="container-addCourse">
+            <ScrollToTop/>
             <div>
                 <Navbar title="CREATE COURSE" />
                 <NavAssess />
@@ -67,7 +76,7 @@ function AddCoursePage(props) {
             </div>
 
             <div className="title-add-course">
-                <button className="add-btn">+</button>
+                <button className="add-btn" onClick ={() =>handleClick('/AddSession')}>+</button>
             </div>
 
             <div className="title-add-course-btn">
