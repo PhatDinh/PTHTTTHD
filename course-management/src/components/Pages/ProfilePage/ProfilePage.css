@@ -1,45 +1,44 @@
-
-.profile{
+.profile {
     background: #F4F4F4;
     position: relative;
 }
 
 
-.profile-avatar{
+.profile-avatar {
     position: absolute;
     width: 200px;
     height: 200px;
     top: 80px;
-    right:270px;
+    right: 270px;
     border-radius: 120px;
     z-index: 1;
-    
+
 }
 
-.profile-header{
+.profile-header {
     position: relative;
     background: #F4F4F4;
     width: 80%;
     height: 100vh;
     margin: 0;
     position: relative;
-    margin-left:auto;
-    margin-right:auto;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 40px;
 }
 
-.profile-header h4{
+.profile-header h4 {
     font-style: italic;
     font-weight: 400;
     font-size: 22px;
     line-height: 26px;
     color: #555555;
-    margin-left:-1100px;
+    margin-left: 20px;
     margin-bottom: 10px;
 }
 
 
-.profile-content{
+.profile-content {
     box-sizing: border-box;
     width: 95%;
     height: fit-content;
@@ -50,14 +49,14 @@
     padding: 20px 30px;
 }
 
-.profile-content h2{
+.profile-content h2 {
     font-weight: 700;
     font-size: 32px;
     line-height: 38px;
     margin-top: 0;
 }
 
-.profile-content p{
+.profile-content p {
     font-weight: 400;
     font-size: 22px;
     line-height: 26px;
