@@ -3,16 +3,54 @@ import './AddCoursePage.css';
 import NavAssess from '../../NavAssess/NavAssess';
 import { useNavigate } from "react-router-dom";
 import ScrollToTop from '../../ScrollToTop';
+import { useState } from "react";
 
 function AddCoursePage(props) {
 
     const navigate = useNavigate(); 
+    const [id,setId] = useState();
+    const [courseName, setCourseName] = useState();
+    const [room, setRoom] =useState();
+    const [password,setPassword] = useState();
+    const [descript, setDescript] = useState();
+    const [trainSkill, setTrain] = useState();
+    const [target, setTarget] = useState();
+    const [sessions, setSessions] = useState();
+
+
 
     function handleClick(url)
     {
         navigate(url);
         console.log('click');
     }
+
+    function handleCreateCourse() {
+        const data = fetch( 'http://localhost:8080/api/addCourse' ,{
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                '_id' : id,
+                'courseName' : courseName,
+                'room':room,
+                'password':password,
+                'description': descript,
+                'trainingSkill':trainSkill,
+                'target':target,
+                'sessions':sessions
+            })
+        }
+        ).then(res=> {
+            if (!res.ok) throw new Error (res.status);
+            else return res.json();
+        }).then(data => {
+            console.log(data);
+        })
+    }
+
+
     return (
         <div className="container-addCourse">
             <ScrollToTop/>
@@ -22,7 +60,7 @@ function AddCoursePage(props) {
 
             </div>
             <div className="title-add-course">
-                <label for="fname">First name</label>
+                <label for="fname">Course name</label>
                 <input type="text" id="fname" placeholder="course name" />
             </div>
 
@@ -81,10 +119,10 @@ function AddCoursePage(props) {
 
             <div className="title-add-course-btn">
                 <button className="cancel-btn">Cancel</button>
-                <button className="create-btn">Create</button>
+                <button className="create-btn"onClick={handleCreateCourse}>Create</button>
             </div>
         </div>
-
+// 
     )
 }
 export default AddCoursePage;
