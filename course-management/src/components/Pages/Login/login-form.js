@@ -28,7 +28,7 @@ const LoginForm = () => {
             if (!res.ok) throw new Error (res.status);
             else return res.json();
         }).then(data => {
-            console.log(data);
+            localStorage.setItem('role',data.role);
             navigate("/homepage");
         })
     }
