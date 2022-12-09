@@ -1,7 +1,8 @@
 
 import loginImg from '../../../images/login.png'
-import { Navigate, useNavigate } from "react-router-dom"
+import { json, Navigate, useNavigate } from "react-router-dom"
 import "./login-form.css"
+import { useState } from 'react';
 
 
 
@@ -9,9 +10,27 @@ const LoginForm = () => {
 
     const navigate = useNavigate();
 
+    const [username,setUsername] = useState();
+    const [password,setPassword] = useState();
+
     function handleLogin() {
-        console.log('click')
-        navigate("/homepage")
+        const data = fetch( 'http://localhost:8080/api/login' ,{
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                'userName' : username,
+                'password' : password,
+            })
+        }
+        ).then(res=> {
+            if (!res.ok) throw new Error (res.status);
+            else return res.json();
+        }).then(data => {
+            console.log(data);
+            navigate("/homepage");
+        })
     }
 
     return (
@@ -21,12 +40,12 @@ const LoginForm = () => {
                 <h1>LOGIN</h1>
                 <div className='input-container'>
                     <i className="fa fa-user icon"></i>
-                    <input type="text" placeholder="Username" className='input-username'/>
+                    <input type="text" placeholder="Username" className='input-username' onChange={e=> setUsername(e.target.value)}/>
                 </div>
 
                 <div className='input-container'>
                     <i className="fa fa-key icon"></i>
-                    <input type="password" placeholder="Password" className='input-password' />
+                    <input type="password" placeholder="Password" className='input-password' onChange={e=> setPassword(e.target.value)}/>
                 </div>
                 <button onClick={handleLogin} className="login-btn" >LOGIN</button>
             </div>
