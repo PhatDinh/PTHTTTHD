@@ -62,23 +62,6 @@ input[class*="typeDes"]::placeholder{
     border-radius: 5px;
 }
 
-.title-add-course2 {
-    margin: auto;
-    width: 50%;
-    background-color: white;
-    border: 1px solid rgb(161, 144, 144);
-    padding: 1px;
-}
-
-.title-add-course2 a {
-    text-decoration: none;
-    color: black;
-}
-
-.title-add-course2 a:hover {
-    opacity: 0.7;
-    color: aquamarine;
-}
 
 .title-add-course .add-btn {
     padding: 10px 15px 10px 15px;
@@ -116,4 +99,21 @@ input[class*="typeDes"]::placeholder{
 
 .title-add-course-btn button:hover {
     opacity: 0.7;
+}
+.title-add-course2 {
+    margin: auto;
+    width: 50%;
+    background-color: white;
+    border: 1px solid rgb(161, 144, 144);
+    padding: 1px;
+}
+
+.title-add-course2 a {
+    text-decoration: none;
+    color: black;
+}
+
+.title-add-course2 a:hover {
+    opacity: 0.7;
+    color: aquamarine;
 }
