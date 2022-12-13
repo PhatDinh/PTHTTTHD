@@ -12,6 +12,10 @@ const CourseDetail = () => {
         navigator('/Document')
     }
 
+    function toAssignment(){
+        navigator('/Assignment')
+    }
+
     return (
         <div className="CourseDetail-container">
             <Navbar title={'COURSE DETAIL'} />
@@ -31,7 +35,7 @@ const CourseDetail = () => {
                     </div>
                     <div className="info-btn">
                         <button onClick={handleClick}>Documents</button>
-                        <button>Assignments</button>
+                        <button onClick={toAssignment}>Assignments</button>
                     </div>
                 </div>
             </div>

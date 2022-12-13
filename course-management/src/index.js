@@ -14,6 +14,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddCoursePage from './components/Pages/CreateCourse/AddCoursePage';
 import DocumentPage from './components/Pages/DocumentPage/DocumentPage';
+import AssignmentsPage from './components/Pages/AssignmentPage/AssignmentPage';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -27,6 +28,7 @@ root.render(
         <Route path ="/CourseDetail" element = {<CourseDetail/>}/>
         <Route path="/Document" element={<DocumentPage/>}/>
         <Route path ="/AddSession" element = {<CreateSession/>}/>
+        <Route path="/Assignment" element= {<AssignmentsPage/>}/>
       </Routes>
     </BrowserRouter>
 );
