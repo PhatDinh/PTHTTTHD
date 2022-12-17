@@ -1,0 +1,17 @@
+.step-container{
+    display: flex;
+    justify-content: center;
+}
+.Step1, .Step2{
+    padding: 20px;
+    border-radius: 30px;
+    margin:20px;
+    color:#fff;
+
+}
+.Step1{
+    background-color: rgb(0, 72, 255);
+}
+.Step2{
+    background-color: rgb(225, 219, 219);
+}

@@ -1,0 +1,20 @@
+.post-info{
+    width:50%;
+    margin: auto;
+}
+input{
+    margin-bottom: 25px;
+}
+#exDuratoion{
+    width:350px;
+    height:40px;
+}
+.post-info-child{
+    margin-top: 25px;
+    display:flex;
+   
+}
+.post-info-child-2{
+    width: 100%;
+    margin-left:20px;
+}

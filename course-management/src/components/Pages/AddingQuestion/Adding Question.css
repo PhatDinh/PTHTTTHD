@@ -1,0 +1,55 @@
+
+*{
+    font-family: Georgia, serif;
+    
+}
+.add-question-container{
+    background: #c0deda;
+}
+.ques-container{
+    height:100%;
+    width: 100%;
+    padding:10px;
+}
+.ques-container input{
+    width:200px;
+    margin-left:8px;
+    margin-right: 8px;
+}
+.render-answer{
+    height:400px;
+    width:300px;
+    background-color: rgb(241, 235, 235);
+    border-radius:20px;
+    position: relative;
+    padding:5px 10px 0px 10px;
+    margin:10px;
+}
+.ans{
+    height:20%;
+    width:80%;
+    background-color: rgb(116, 191, 229);
+    margin:10px;    
+    border-radius: 20px;
+    padding:10px;
+
+}
+.ans-container{
+    display: flex;
+    flex-wrap:wrap;
+}
+.done-btn, .add-btn, .remove-btn{
+    padding:10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color:rgb(239, 236, 236);
+    font-weight: bold;
+    font-size: 15px;
+}
+.done-btn, .add-btn{
+    background-color: rgb(8, 208, 28);
+}
+.remove-btn{
+    background-color: red;
+}
+.add-question-container .Step2{background-color: red;}

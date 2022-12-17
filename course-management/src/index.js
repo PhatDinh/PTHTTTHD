@@ -15,8 +15,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddCoursePage from './components/Pages/CreateCourse/AddCoursePage';
 import DocumentPage from './components/Pages/DocumentPage/DocumentPage';
 import AssignmentsPage from './components/Pages/AssignmentPage/AssignmentPage';
-
-
+import PostAssignment from './components/Pages/PostAssignment/PostAssignment';
+import AddingQuestion from './components/Pages/AddingQuestion/AddingQuestion';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -29,6 +29,8 @@ root.render(
         <Route path="/Document" element={<DocumentPage/>}/>
         <Route path ="/AddSession" element = {<CreateSession/>}/>
         <Route path="/Assignment" element= {<AssignmentsPage/>}/>
+        <Route path ="/postAsg" element ={<PostAssignment/>}/>
+        <Route path ="/addQues" element ={<AddingQuestion/>}/>
       </Routes>
     </BrowserRouter>
 );
