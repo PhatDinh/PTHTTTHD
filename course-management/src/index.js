@@ -17,6 +17,7 @@ import DocumentPage from './components/Pages/DocumentPage/DocumentPage';
 import AssignmentsPage from './components/Pages/AssignmentPage/AssignmentPage';
 import PostAssignment from './components/Pages/PostAssignment/PostAssignment';
 import AddingQuestion from './components/Pages/AddingQuestion/AddingQuestion';
+import AddEssay from './components/Pages/AddEssay/AddEssay';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -31,6 +32,7 @@ root.render(
         <Route path="/Assignment" element= {<AssignmentsPage/>}/>
         <Route path ="/postAsg" element ={<PostAssignment/>}/>
         <Route path ="/addQues" element ={<AddingQuestion/>}/>
+        <Route path ="/addEssay" element ={<AddEssay/>}/>
       </Routes>
     </BrowserRouter>
 );

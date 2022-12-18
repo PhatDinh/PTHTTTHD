@@ -10,11 +10,21 @@ import { useNavigate } from "react-router-dom";
 const PostAssignment = () => {
   const navigator = useNavigate();
   function toStep2(){
-    navigator('/addQues')
+    if(selectedValue  === 'multiChoice'){
+      navigator('/addQues')
+    }
+    if(selectedValue === 'essay'){
+      navigator('/addEssay')
+    }
+    
+   
 }
   const [discardButton, setDiscard] = useState(false);
-
-  
+  const [selectedValue, setSelectedValue] = useState('multiChoice');
+  const handleChange = (event) => {
+    // Update the state variable with the new value
+    setSelectedValue(event.target.value);
+  };
   return (
     <div>
       <Navbar title={"STEP"}></Navbar>
@@ -58,7 +68,7 @@ const PostAssignment = () => {
           <div className="post-info-child-1">
             <label for="exDuratoion">Type of question</label>
             <br></br>
-            <select id="exDuratoion" name="exlist">
+            <select id="exDuratoion" name="exlist" value={selectedValue} onChange={handleChange}>
               <option value="multiChoice">Multiple - Choice</option>
               <option value="essay">Essay</option>
             </select>

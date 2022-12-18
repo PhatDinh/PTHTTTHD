@@ -1,0 +1,90 @@
+body{
+    background: #c0deda;
+}
+.essay-container .Step2{
+    background-color: red;
+}
+
+.create-ques-btn{
+    width:41%;
+}
+.create-ques-btn button{
+    padding:10px 20px 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+.create-ques-btn button:hover{
+    background-color: red;
+}
+.list-ques{
+    background-color: antiquewhite;
+    
+}
+.essay-container .title-add-course2{
+    margin-left:7px;
+    width:40%;
+    cursor: pointer;
+    font-size: 20px;
+    padding:10px;
+    border-radius: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    display:flex;
+    
+
+}
+.essay-container .title-add-course2:hover{
+    background-color:aquamarine;
+}
+
+.create-ques-btn{
+    margin-left:7px;
+}
+
+.selected-question{
+    
+    border: 3px solid  rgb(201, 196, 196);
+    padding: 10px;
+}
+.create-container{
+    display: flex;
+}
+.block-selected-question{
+   
+    border: 3px solid  rgb(228, 222, 222);
+    margin-left:800px;
+    width: 40%;
+    padding: 15px;
+    position: absolute;
+}
+.create-ques-btn{
+    position: relative;
+}
+.list-container{
+    display: flex;
+}
+.icon-edit-rmv{
+    margin-right:800px;
+    padding:11px;
+    background-color:white;
+}
+.icon-edit-rmv{
+   
+    background-color: white;
+    border: 1px solid rgb(161, 144, 144);
+    padding: 11px 0px 11px 16px;
+    display: flex;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+
+}
+.icon-edit-rmv a {
+    text-decoration: none;
+    color: black;
+}
+.icon-edit-rmv a:hover {
+   
+    color: rgb(244, 16, 16);
+}
