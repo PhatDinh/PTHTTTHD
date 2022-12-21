@@ -36,7 +36,6 @@ const Homepage= () => {
         }
 
         fetchData();
-        console.log(courses);
     },[]
     )
 
@@ -46,7 +45,7 @@ const Homepage= () => {
             <Navbar title={'COURSE'}  /> 
             <div className='homepage-header'>
                 <h2 className="homepage-title">ALL COURSES - SY2020-2021</h2>
-                <button className="homepage-btn" onClick={() => handleClick('/AddCourse')}>Create Course</button>
+                {  localStorage.getItem('role') == 'teacher' && <button className="homepage-btn" onClick={() => handleClick('/AddCourse')}>Create Course</button>}
             </div>
             <div className="homepage-content">
                 {
