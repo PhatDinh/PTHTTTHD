@@ -6,20 +6,23 @@ import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 
-const AssignmentsPage = () =>{
+const AssignmentsPage = () => {
     const navigator = useNavigate();
 
-    function handleClick(){
+    function handleClick() {
         navigator('/postAsg')
     }
+
+
+
     return (
         <div className="assignmentpage">
             <Navbar title={'Centertric'}></Navbar>
-            <div className="assignmentpage-create" onClick = {handleClick}><p>Create</p></div>
-            <AssignmentCard/>
-            <AssignmentCard/>
-            <AssignmentCard/>
-            <AssignmentCard/>
+            <div className="assignmentpage-create" onClick={handleClick}><p>Create</p></div>
+            <AssignmentCard />
+            <AssignmentCard />
+            <AssignmentCard />
+            <AssignmentCard />
         </div>
     )
 }
