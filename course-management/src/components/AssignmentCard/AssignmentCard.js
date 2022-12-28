@@ -9,7 +9,7 @@ const AssignmentCard = () => {
     const navigator = useNavigate();
 
     function handleQuiz() {
-        navigator('/essayQuiz')
+        navigator('/choiceQuiz')
     }
 
 
