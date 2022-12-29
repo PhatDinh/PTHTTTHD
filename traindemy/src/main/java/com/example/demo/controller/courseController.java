@@ -16,10 +16,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.courseModel;
+import com.example.demo.model.sessionModel;
+import com.example.demo.model.userModel;
 import com.example.demo.repository.courseRepository;
+import com.example.demo.repository.sessionRepository;
 import com.example.demo.repository.userRepository;
 
 @RestController
@@ -33,20 +37,43 @@ public class courseController {
 	@Autowired
 	userRepository userRepo;
 	
+	@Autowired
+	sessionRepository sessionRepo;
+	
+	
 	Logger logger = LoggerFactory.getLogger(courseController.class);
 	@PostMapping("/addCourse")
 	public ResponseEntity<courseModel> addCourse(@RequestBody courseModel course) {
-		courseModel _user = courseRepo.save(course);
-		return new ResponseEntity<>(_user, HttpStatus.CREATED);
+		List<sessionModel> sessionAr = sessionRepo.saveAll(course.getSessions());
+
+		courseModel newCourse = courseRepo.save(
+				new courseModel(
+						course.getCourseName(),
+						course.getRoom(),
+						course.getPassword(),
+						course.getDescription(),
+						course.getTrainingSkill(),
+						course.getTarget(),
+						sessionAr,
+						course.getAuthor()
+					));
+		courseModel _course = courseRepo.save(newCourse);
+		return new ResponseEntity<>(_course, HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/courses")
-	public ResponseEntity<List<courseModel>> courseList() {
+	public ResponseEntity<List<courseModel>> courseListByTrainer(@RequestParam(required = false) String trainerId ) {
 		try {
 			List<courseModel> courseList = new ArrayList<courseModel>();
-			courseRepo.findAll().forEach(courseList::add);
+			Logger log = LoggerFactory.getLogger(courseController.class);
+			log.info(trainerId);
+			if(trainerId == null) {
+				courseRepo.findAll().forEach(courseList::add);
+			} else {
+				courseList = courseRepo.findByAuthor(trainerId);
+			}
 		if (courseList.isEmpty()) {
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 			return new ResponseEntity<>(courseList, HttpStatus.OK);
 		} catch (Exception e) {

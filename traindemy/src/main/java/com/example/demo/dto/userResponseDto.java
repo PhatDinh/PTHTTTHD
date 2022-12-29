@@ -1,38 +1,36 @@
-package com.example.demo.model;
+package com.example.demo.dto;
 
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-/**
- * @author MSI-Nam
- *
- */
+import com.example.demo.model.userCourseModel;
+
 @Document(collection = "User")
-public class userModel {
+public class userResponseDto {
 	@Id
 	private String _id;
 	private String userName;
 	private String password;
 	private String role;
 	private String name;
-	private List<userCourseModel> courses;
+	private List<userCourseResponseDto> courses;
 
-	public userModel(String userName, String password) {
+	public userResponseDto(String userName, String password) {
 		super();
 		this.userName = userName;
 		this.password = password;
 	}
 	
-	public userModel(String userName, String password, String role) {
+	public userResponseDto(String userName, String password, String role) {
 		super();
 		this.userName = userName;
 		this.password = password;
 		this.role = role;
 	}
 
-	public userModel(String userId, String userName, String password, String role) {
+	public userResponseDto(String userId, String userName, String password, String role) {
 		super();
 		this._id = userId;
 		this.userName = userName;
@@ -40,26 +38,25 @@ public class userModel {
 		this.role = role;
 	}
 
-	public userModel(String _id, String userName, String password, String role, String name,
-			List<userCourseModel> courses) {
+	public userResponseDto(String _id, String userName, String role, String name,
+			List<userCourseResponseDto> courses) {
 		super();
 		this._id = _id;
 		this.userName = userName;
-		this.password = password;
 		this.role = role;
 		this.name = name;
 		this.courses = courses;
 	}
 
-	public userModel() {
+	public userResponseDto() {
 		super();
 	}
 	
-	public String getId() {
+	public String get_id() {
 		return _id;
 	}
 
-	public void setId(String _id) {
+	public void set_id(String _id) {
 		this._id = _id;
 	}
 
@@ -95,11 +92,11 @@ public class userModel {
 		this.name = name;
 	}
 	
-	public List<userCourseModel> getCourses() {
+	public List<userCourseResponseDto> getCourses() {
 		return courses;
 	}
 
-	public void setCourses(List<userCourseModel> courses) {
+	public void setCourses(List<userCourseResponseDto> courses) {
 		this.courses = courses;
 	}
 }

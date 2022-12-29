@@ -6,31 +6,38 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "Course")
+@Document(collection = "Assignment")
 public class assignmentModel {
-	enum type {
-		CHOICE,
-		ESSAY
-	}
-	
 	@Id
 	private String _id;
 	private String assignmentName;
 	private String description;
-	private Date examDuration;
-	private String startTime;
-	private type type;
-	private String pointInPeriod;
+	private int examDuration;
+	private Date startTime;
+	private String type;
+	private float pointInPeriod;
 	private List<multiChoiceModel> multiChoiceQuestions;
 	private List<essayModel> essayQuestions;
+	private String sessionId;
 	
-	public assignmentModel() {
+	public assignmentModel(String assignmentName, String description, int examDuration, Date startTime, String type,
+			float pointInPeriod, List<multiChoiceModel> multiChoiceQuestions, List<essayModel> essayQuestions,
+			String sessionId) {
 		super();
+		this.assignmentName = assignmentName;
+		this.description = description;
+		this.examDuration = examDuration;
+		this.startTime = startTime;
+		this.type = type;
+		this.pointInPeriod = pointInPeriod;
+		this.multiChoiceQuestions = multiChoiceQuestions;
+		this.essayQuestions = essayQuestions;
+		this.sessionId = sessionId;
 	}
-	
-	public assignmentModel(String _id, String assignmentName, String description, Date examDuration, String startTime,
-			com.example.demo.model.assignmentModel.type type, String pointInPeriod,
-			List<multiChoiceModel> multiChoiceQuestions, List<essayModel> essayQuestions) {
+
+	public assignmentModel(String _id, String assignmentName, String description, int examDuration, Date startTime,
+			String type, float pointInPeriod, List<multiChoiceModel> multiChoiceQuestions,
+			List<essayModel> essayQuestions, String sessionId) {
 		super();
 		this._id = _id;
 		this.assignmentName = assignmentName;
@@ -41,20 +48,11 @@ public class assignmentModel {
 		this.pointInPeriod = pointInPeriod;
 		this.multiChoiceQuestions = multiChoiceQuestions;
 		this.essayQuestions = essayQuestions;
+		this.sessionId = sessionId;
 	}
 
-	public assignmentModel(String assignmentName, String description, Date examDuration, String startTime,
-			com.example.demo.model.assignmentModel.type type, String pointInPeriod,
-			List<multiChoiceModel> multiChoiceQuestions, List<essayModel> essayQuestions) {
+	public assignmentModel() {
 		super();
-		this.assignmentName = assignmentName;
-		this.description = description;
-		this.examDuration = examDuration;
-		this.startTime = startTime;
-		this.type = type;
-		this.pointInPeriod = pointInPeriod;
-		this.multiChoiceQuestions = multiChoiceQuestions;
-		this.essayQuestions = essayQuestions;
 	}
 
 	public String get_id() {
@@ -81,35 +79,35 @@ public class assignmentModel {
 		this.description = description;
 	}
 
-	public Date getExamDuration() {
+	public int getExamDuration() {
 		return examDuration;
 	}
 
-	public void setExamDuration(Date examDuration) {
+	public void setExamDuration(int examDuration) {
 		this.examDuration = examDuration;
 	}
 
-	public String getStartTime() {
+	public Date getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(String startTime) {
+	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
 
-	public type getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(type type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
-	public String getPointInPeriod() {
+	public float getPointInPeriod() {
 		return pointInPeriod;
 	}
 
-	public void setPointInPeriod(String pointInPeriod) {
+	public void setPointInPeriod(float pointInPeriod) {
 		this.pointInPeriod = pointInPeriod;
 	}
 
@@ -129,8 +127,14 @@ public class assignmentModel {
 		this.essayQuestions = essayQuestions;
 	}
 
-	
+	public String getSessionId() {
+		return sessionId;
+	}
 
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
+	}
+	
 	
 }
 

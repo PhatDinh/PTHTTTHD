@@ -1,12 +1,11 @@
-package com.example.demo.model;
+package com.example.demo.dto;
 
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.example.demo.model.sessionModel;
 
-@Document(collection = "Course")
-public class courseModel {
+public class courseResponseDto {
 	@Id
 	private String _id;
 	private String courseName;
@@ -17,13 +16,16 @@ public class courseModel {
 	private String target;
 	private List<sessionModel> sessions;
 	private String author; // userId
+	private String status;
+	private Number score;
 	
-	public courseModel() {
+	public courseResponseDto() {
 		super();
 	}
 
-	public courseModel(String _id, String courseName, String room, String password, String description,
-			String trainingSkill, String target, List<sessionModel> sessions) {
+	public courseResponseDto(String _id, String courseName, String room, String password, String description,
+			String trainingSkill, String target, List<sessionModel> sessions, String author, String status,
+			Number score) {
 		super();
 		this._id = _id;
 		this.courseName = courseName;
@@ -33,34 +35,9 @@ public class courseModel {
 		this.trainingSkill = trainingSkill;
 		this.target = target;
 		this.sessions = sessions;
-	}
-
-	public courseModel(String courseName, String room, String password, String description, String trainingSkill,
-			String target, List<sessionModel> sessions, String author) {
-		super();
-		this.courseName = courseName;
-		this.room = room;
-		this.password = password;
-		this.description = description;
-		this.trainingSkill = trainingSkill;
-		this.target = target;
-		this.sessions = sessions;
 		this.author = author;
-	}
-	
-	
-	public courseModel(String _id, String courseName, String room, String password, String description,
-			String trainingSkill, String target, List<sessionModel> sessions, String author) {
-		super();
-		this._id = _id;
-		this.author = author;
-		this.courseName = courseName;
-		this.room = room;
-		this.password = password;
-		this.description = description;
-		this.trainingSkill = trainingSkill;
-		this.target = target;
-		this.sessions = sessions;
+		this.status = status;
+		this.score = score;
 	}
 
 	public String get_id() {
@@ -135,6 +112,22 @@ public class courseModel {
 		this.author = author;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public Number getScore() {
+		return score;
+	}
+
+	public void setScore(Number score) {
+		this.score = score;
+	}
 	
 }
+
 

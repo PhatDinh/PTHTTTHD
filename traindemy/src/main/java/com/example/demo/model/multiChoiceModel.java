@@ -4,13 +4,13 @@ import java.util.List;
 
 public class multiChoiceModel {
 	private String question;
-	private List<String> answer;
+	private List<String> answers;
 	private String rightAnswer;
 	
-	public multiChoiceModel(String question, List<String> answer, String rightAnswer) {
+	public multiChoiceModel(String question, List<String> answers, String rightAnswer) {
 		super();
 		this.question = question;
-		this.answer = answer;
+		this.answers = answers;
 		this.rightAnswer = rightAnswer;
 	}
 
@@ -26,12 +26,12 @@ public class multiChoiceModel {
 		this.question = question;
 	}
 
-	public List<String> getAnswer() {
-		return answer;
+	public List<String> getAnswers() {
+		return answers;
 	}
 
-	public void setAnswer(List<String> answer) {
-		this.answer = answer;
+	public void setAnswers(List<String> answers) {
+		this.answers = answers;
 	}
 
 	public String getRightAnswer() {

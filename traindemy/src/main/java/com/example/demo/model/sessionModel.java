@@ -1,7 +1,9 @@
 package com.example.demo.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "Session")
 public class sessionModel {
 	@Id
 	private String _id;
@@ -14,14 +16,6 @@ public class sessionModel {
 		super();
 	}
 	
-	public String get_id() {
-		return _id;
-	}
-
-	public void set_id(String _id) {
-		this._id = _id;
-	}
-	
 	public sessionModel(String _id, String sessionName, String content, String trainingSkill, String target) {
 		super();
 		this._id = _id;
@@ -30,13 +24,13 @@ public class sessionModel {
 		this.trainingSkill = trainingSkill;
 		this.target = target;
 	}
+	
+	public String get_id() {
+		return _id;
+	}
 
-	public sessionModel(String sessionName, String content, String trainingSkill, String target) {
-		super();
-		this.sessionName = sessionName;
-		this.content = content;
-		this.trainingSkill = trainingSkill;
-		this.target = target;
+	public void set_id(String _id) {
+		this._id = _id;
 	}
 
 	public String getSessionName() {
