@@ -20,6 +20,7 @@ import AddingQuestion from './components/Pages/AddingQuestion/AddingQuestion';
 import AddEssay from './components/Pages/AddEssay/AddEssay';
 import ChoicePage from './components/Pages/QuizPage/ChoicePage';
 import EssayPage from './components/Pages/QuizPage/EssayPage';
+import ManagePage from './components/Pages/ManagePage/ManagePage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -37,6 +38,7 @@ root.render(
         <Route path ="/addEssay" element ={<AddEssay/>}/>
         <Route path="/choiceQuiz" element={<ChoicePage />} />
         <Route path="/essayQuiz" element={<EssayPage />} />
+        <Route path="/manage" element={<ManagePage/>}/>
       </Routes>
     </BrowserRouter>
 );

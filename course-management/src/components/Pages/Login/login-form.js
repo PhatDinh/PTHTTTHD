@@ -10,26 +10,30 @@ const LoginForm = () => {
 
     const navigate = useNavigate();
 
-    const [username,setUsername] = useState();
-    const [password,setPassword] = useState();
+    const [username, setUsername] = useState();
+    const [password, setPassword] = useState();
 
     function handleLogin() {
-        const data = fetch( 'http://localhost:8080/api/login' ,{
+        const data = fetch('http://localhost:8080/api/login', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
             },
             body: JSON.stringify({
-                'userName' : username,
-                'password' : password,
+                'userName': username,
+                'password': password,
             })
         }
-        ).then(res=> {
-            if (!res.ok) throw new Error (res.status);
+        ).then(res => {
+            if (!res.ok) throw new Error(res.status);
             else return res.json();
         }).then(data => {
-            localStorage.setItem('role',data.role);
-            navigate("/homepage");
+            localStorage.setItem('role', data.role);
+            localStorage.setItem('id', data._id);
+            if (data.role === 'admin') {
+                navigate('/manage')
+            }
+            else navigate("/homepage");
         })
     }
 
@@ -40,17 +44,17 @@ const LoginForm = () => {
                 <h1>LOGIN</h1>
                 <div className='input-container'>
                     <i className="fa fa-user icon"></i>
-                    <input type="text" placeholder="Username" className='input-username' onChange={e=> setUsername(e.target.value)}/>
+                    <input type="text" placeholder="Username" className='input-username' onChange={e => setUsername(e.target.value)} />
                 </div>
 
                 <div className='input-container'>
                     <i className="fa fa-key icon"></i>
-                    <input type="password" placeholder="Password" className='input-password' onChange={e=> setPassword(e.target.value)}/>
+                    <input type="password" placeholder="Password" className='input-password' onChange={e => setPassword(e.target.value)} />
                 </div>
                 <button onClick={handleLogin} className="login-btn" >LOGIN</button>
             </div>
         </div>
-       
+
     )
 }
 
