@@ -2,7 +2,10 @@ import { Divider, Tab, Tabs, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import { useState } from "react"
 import Navbar from "../../Navbar/Navbar"
+import DepartmentPageTab from "./DepartmentPageTab"
 import HomePageTab from "./HomePageTab"
+import LevelPageTab from "./LevelPageTab"
+import SkillPageTab from "./SkillPageTab"
 
 
 
@@ -20,7 +23,7 @@ const ManagePage = () => {
         <Box sx={{ backgroundColor: 'white', minHeight: '100vh' }}>
             <Navbar title='MANAGE'></Navbar>
             <Box>
-                <Tabs value={tabIndex} onChange={handleTabChange} variant="fullWidth" >
+                <Tabs value={tabIndex} onChange={handleTabChange} variant="fullWidth" textColor='primary'>
 
                     {labels.map((value, index) => {
                         const tabColor = index === tabIndex ? '#ccffd1' : 'white'
@@ -30,12 +33,9 @@ const ManagePage = () => {
             </Box>
             <Box sx={{ padding: 2 }}>
                 {tabIndex === 0 && <HomePageTab />}
-                {tabIndex === 1}
-                {tabIndex === 2 && (
-                    <Box>
-                        <Typography>The third tab</Typography>
-                    </Box>
-                )}
+                {tabIndex === 1 && <SkillPageTab />}
+                {tabIndex === 2 && <LevelPageTab />}
+                {tabIndex == 3 && <DepartmentPageTab />}
             </Box>
         </Box>
     )
