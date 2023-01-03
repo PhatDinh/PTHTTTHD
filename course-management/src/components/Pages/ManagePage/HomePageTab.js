@@ -98,7 +98,7 @@ const HomePageTab = () => {
             }}>
                 {courses?.map(value => {
                     return <Grid2 xs={4} sx={{
-                    }}><CourseCard courseName={value.courseName} room={value.room} description={value.description} style={{
+                    }}><CourseCard courseName={value.courseName} room={value.room} description={value.description} id={value._id} style={{
                     }} /></Grid2>
                 })}
             </Grid2>

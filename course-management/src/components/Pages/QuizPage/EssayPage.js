@@ -2,14 +2,27 @@
 import { Button, TextareaAutosize, TextField } from "@mui/material";
 import { Box, margin } from "@mui/system";
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import Navbar from "../../Navbar/Navbar";
 
 const EssayPage = () => {
 
 
-    const questions = ['A user sends an HTTP request to a web server on a remote network. During encap', 'Which Rapid Spanning Tree Protocol port state is a combination of standard 802.1D ...']
+    const navigate = useNavigate();
+
+    const location = useLocation();
+
+    const quiz = location.state.quiz;
+
+    const questions = quiz.map(data => data.question)
+
+
+
     const holder = Array.from(questions, value => '');
-    const [answerBox, setAnswerBox] = useState(holder);
+
+    const [answerBox, setAnswerBox] = useState(holder)
+
+
 
     const [selectQuestion, setSelectQuestion] = useState(1);
 
@@ -19,23 +32,20 @@ const EssayPage = () => {
 
     const handleAnswer = (event) => {
 
-
-
-
-        const newBox = answerBox.map((value, i) => {
-            if (i == selectQuestion) {
-                return event.target.value;
-            }
-            else {
-                return 'value';
-            }
+        console.log(event.target.value)
+        setAnswerBox(prev => {
+            let items = [...prev];
+            let item = items[selectQuestion]
+            item = event.target.value
+            console.log(item)
+            items[selectQuestion] = item;
+            return items;
         })
-
-        setAnswerBox(newBox);
     }
 
     const sendResult = () => {
         console.log('sending')
+        navigate(-1);
     }
 
 
@@ -60,7 +70,7 @@ const EssayPage = () => {
                         const boxColor = i == selectQuestion ? 'grey' : 'white';
 
 
-                        return <Box
+                        return <Box key={value}
                             onClick={() => handleClick(i)}
                             sx={
                                 {
@@ -85,7 +95,7 @@ const EssayPage = () => {
                             borderRadius: 5
                         }
                     }
-                    onChange={(e) => handleAnswer(e)}
+                    onChange={handleAnswer}
                     value={answerBox[selectQuestion]}
 
                 />

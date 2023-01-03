@@ -42,7 +42,8 @@ const AssignmentsPage = () => {
             {
                 assignments?.map(e => {
                     console.log(e);
-                    return <AssignmentCard key={e._id} />
+                    const type = e.multiChoiceQuestions.length != 0 ? 'ChoiceBox' : 'Essay'
+                    return <AssignmentCard key={e._id} type={type} assignmentId={e._id} choiceBox={e.multiChoiceQuestions} essay={e.essayQuestions} />
                 }
                 )
             }

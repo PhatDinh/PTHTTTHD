@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 
 
-const AssignmentCard = () => {
+const AssignmentCard = (props) => {
 
     const navigator = useNavigate();
 
@@ -13,7 +13,12 @@ const AssignmentCard = () => {
 
 
     function handleQuiz() {
-        navigator('/choiceQuiz')
+        if (props.type == 'ChoiceBox') navigator('/choiceQuiz', {
+            state: { quiz: props.choiceBox }
+        })
+        else navigator('/essayQuiz', {
+            state: { quiz: props.essay }
+        })
     }
 
 

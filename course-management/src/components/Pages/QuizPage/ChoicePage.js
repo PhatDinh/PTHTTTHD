@@ -1,6 +1,7 @@
-import { Button } from "@mui/material";
+import { Button, Dialog, DialogTitle } from "@mui/material";
 import { Box } from "@mui/system";
 import { useState } from "react";
+import { useAsyncError, useLocation, useNavigate } from "react-router";
 import Navbar from "../../Navbar/Navbar";
 import ChoiceBox from "./ChoiceBox";
 
@@ -8,15 +9,48 @@ import ChoiceBox from "./ChoiceBox";
 
 const ChoicePage = () => {
 
+    const location = useLocation();
+    const navigate = useNavigate();
 
-    const questions = ['A user sends an HTTP request to a web server on a remote network. During encap', 'A user sends an HTTP request to a web server on a remote network. During encap']
-    const answer = [['Application1', 'Application2', 'Application3', 'Application4'], ['Application', 'Application', 'Application', 'Application']]
+    const quiz = location.state.quiz;
+
+    const questions = quiz.map((data, index) => data.question)
+
+    const answer = quiz.map((data, index) => data.answers)
 
     const holder = Array.from(questions, value => '');
-    const [answerBox, setAnswerBox] = useState([1, 0]);
+    const [answerBox, setAnswerBox] = useState([]);
+
+
+    const rightAnswer = quiz.map((data, index) => data.rightAnswer)
 
     const sendResult = () => {
-        console.log('sending')
+        checkResult();
+        setOpen(true)
+        
+    }
+
+    const [score, setScore] = useState(0)
+
+
+    const [open, setOpen] = useState(false);
+
+
+    const handleClose = () => {
+        setOpen(false)
+        navigate(-1)
+    }
+
+    const checkResult = () => {
+        answerBox?.map(
+            (e, index) => {
+                console.log(rightAnswer[index])
+                console.log(answer[index][e])
+                if (answer[index][e] === rightAnswer[index]) {
+                    setScore(prev => prev + 1)
+                }
+            }
+        )
     }
 
 
@@ -34,7 +68,9 @@ const ChoicePage = () => {
                     }
                 }>SUBMIT</Button>
             </Box>
-
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>Your score is {score} / {questions.length}</DialogTitle>
+            </Dialog>
 
         </Box>
     )

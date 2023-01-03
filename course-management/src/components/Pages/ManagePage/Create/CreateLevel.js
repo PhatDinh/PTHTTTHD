@@ -62,11 +62,16 @@ const CreateLevel = () => {
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({
                 'levelName': name,
-                'skills': skills,
-            }).then(res => {
-                console.log(res);
+                'skills': skills.map(e => {
+                    let id = skillList.indexOf(e);
+                    return {
+                        '_id': e._id,
+                        'skillName': e
+                    }
+                }),
             })
-        })
+        }).then(res => console.log(res))
+        navigate('/manager')
     }
 
 

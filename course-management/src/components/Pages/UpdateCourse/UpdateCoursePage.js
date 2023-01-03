@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import { Button, IconButton, MenuItem, Select, Table, TableBody, TableCell, TableRow, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from "react-router-dom";
@@ -15,16 +15,33 @@ const UpdateCoursePage = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+
+
+    const [name, setName] = useState();
     const [levels, setlevels] = useState(['JS', 'c++']);
-    const [levelList, setlevelList] = useState(['A', 'B']);
+    const [levelList, setLevelList] = useState();
 
 
-   
+    const [departments, setDepartments] = useState(['A']);
+    const [departmentList, setDepartmentList] = useState();
 
-    
+
+    const courseId = location.state.id;
+
+
+    const addName = (event) => {
+        setName(event.target.value)
+    }
 
     const handleClick = (data) => {
         setlevels(prev => {
+            const temp = prev.filter(e => e != data)
+            return temp;
+        })
+    }
+
+    const handleDepartment = (data) => {
+        setDepartments(prev => {
             const temp = prev.filter(e => e != data)
             return temp;
         })
@@ -38,10 +55,49 @@ const UpdateCoursePage = () => {
         }
     }
 
-    const sendlevel = () => {
+    const addDepartment = (event) => {
+        if (!departments.includes(event.target.value)) {
+            setDepartments(prev => {
+                return [...prev, event.target.value];
+            })
+        }
+    }
+
+
+    const fetchData = async () => {
+        await fetch('http://localhost:8080/api/levels', {
+            method: 'GET'
+        }).then(res => res.json()).then(data => {
+            setLevelList(data)
+        });
+
+        await fetch('http://localhost:8080/api/departments', {
+            method: 'GET'
+        }).then(res => {
+            if (!res.ok) throw new Error(res.status);
+            else return res.json();
+        }).then(data => {
+            setDepartmentList(data)
+        });
 
     }
 
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+
+    const sendSubmit = async () => {
+        await fetch(`http://localhost:8080/api/courses/${courseId}`, {
+            method: 'PUT',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({
+                'courseName': name
+            })
+        }).then(res => console.log(res))
+        navigate('/manager')
+    }
 
     const goBack = () => {
         navigate(-1);
@@ -64,7 +120,7 @@ const UpdateCoursePage = () => {
 
                 }}>
                     <Typography variant='h6' align='start'>Course name</Typography>
-                    <TextField placeholder="Course name" fullWidth></TextField>
+                    <TextField placeholder="Course name" onChange={setName} fullWidth></TextField>
                 </Box>
                 <Box sx={{
                     width: '80vw',
@@ -100,7 +156,7 @@ const UpdateCoursePage = () => {
                     }}>
                         <Select label='Choose level' onChange={addlevel} fullWidth>
                             {levelList?.map(e => {
-                                return <MenuItem value={e} key={e} >{e}</MenuItem>
+                                return <MenuItem value={e.levelName} key={e._id} >{e.levelName}</MenuItem>
                             })}
                         </Select>
                     </Box>
@@ -118,7 +174,7 @@ const UpdateCoursePage = () => {
                         <Table>
                             <TableBody>
                                 {
-                                    levels?.map((data, index) => {
+                                    departments?.map((data, index) => {
                                         return <TableRow key={data} sx={{
                                             border: 1,
                                             borderColor: '#E0E0E0'
@@ -127,7 +183,7 @@ const UpdateCoursePage = () => {
                                                 borderBottom: 'none',
                                                 display: 'flex',
                                                 justifyContent: 'space-between'
-                                            }}><Typography>{data}</Typography> <IconButton onClick={() => handleClick(data)}><DeleteIcon /></IconButton>
+                                            }}><Typography>{data}</Typography> <IconButton onClick={() => handleDepartment(data)}><DeleteIcon /></IconButton>
                                             </TableCell>
                                         </TableRow>
                                     })
@@ -138,9 +194,9 @@ const UpdateCoursePage = () => {
                     <Box sx={{
                         marginTop: 5
                     }}>
-                        <Select label='Choose level' onChange={addlevel} fullWidth>
-                            {levelList?.map(e => {
-                                return <MenuItem value={e} key={e} >{e}</MenuItem>
+                        <Select label='Choose department' onChange={addDepartment} fullWidth>
+                            {departmentList?.map(e => {
+                                return <MenuItem value={e.departmentName} key={e._id} >{e.departmentName}</MenuItem>
                             })}
                         </Select>
                     </Box>
@@ -153,7 +209,7 @@ const UpdateCoursePage = () => {
                         <Button variant="contained" size="medium" onClick={goBack} sx={{
                             marginRight: 4,
                         }}>Cancel</Button>
-                        <Button variant="contained" size="medium" onClick={sendlevel}>Submit</Button>
+                        <Button variant="contained" size="medium" onClick={sendSubmit}>Submit</Button>
                     </Box>
                 </Box>
 
