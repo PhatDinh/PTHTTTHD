@@ -3,31 +3,58 @@ import { Box } from "@mui/system"
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 
 
 const SkillPageTab = () => {
 
-    const [skills, setSkills] = useState(['C++', 'Java', 'Typescript', 'C#'])
+    const [skills, setSkills] = useState([])
 
 
     const [newSkill, setNewSkill] = useState('');
 
+    const fetchData = async () => {
+        await fetch('http://localhost:8080/api/skills', {
+            method: 'GET'
+        }).then(res => res.json()).then(data => {
+            setSkills(data)
+            localStorage.setItem('skills', skills)
+        });
+    }
 
-    const addSkill = () => {
-        console.log(newSkill)
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+
+
+    const addSkill = async () => {
         if (newSkill === '' || skills.includes(newSkill)) {
             console.log('error');
         }
         else {
-
-            setSkills(prev => {
-                return [...prev, newSkill]
+            await fetch('http://localhost:8080/api/addSkill', {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify({
+                    'skillName': newSkill
+                })
+            }).then(res => {
+                if (res.ok) fetchData();
             })
             setNewSkill('')
         }
+    }
+
+    const deleteSkill = async (id) => {
+        await fetch(`http://localhost:8080/api/skills/${id}`, {
+            method: 'DELETE',
+        }).then(res => {
+            if (res.ok) fetchData();
+            else console.log(res)
+        })
     }
 
 
@@ -79,7 +106,7 @@ const SkillPageTab = () => {
                         {
                             skills.map((e) => {
 
-                                return <TableRow key={e} sx={{
+                                return <TableRow key={e.skillName} sx={{
                                     border: 1,
                                     borderColor: '#E0E0E0'
                                 }}>
@@ -87,7 +114,7 @@ const SkillPageTab = () => {
                                         borderBottom: 'none',
                                         display: 'flex',
                                         justifyContent: 'space-between'
-                                    }}>{e} <DeleteIcon />
+                                    }}>{e.skillName} <IconButton onClick={() => deleteSkill(e._id)} > <DeleteIcon /></IconButton>
                                     </TableCell>
                                 </TableRow>
                             })

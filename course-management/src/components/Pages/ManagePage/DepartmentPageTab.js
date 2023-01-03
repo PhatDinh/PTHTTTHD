@@ -3,7 +3,7 @@ import { Box } from "@mui/system"
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const DepartmentPageTab = () => {
 
-    const [Departments, setDepartments] = useState(['Accountant', 'Dev', 'HR', 'Optimize'])
+    const [Departments, setDepartments] = useState([])
 
     const navigate = useNavigate();
 
@@ -19,6 +19,33 @@ const DepartmentPageTab = () => {
     const handleClick = () => {
         navigate('/create-department');
     }
+
+
+    const fetchData = async () => {
+        await fetch('http://localhost:8080/api/departments', {
+            method: 'GET'
+        }).then(res => {
+            if (!res.ok) throw new Error(res.status);
+            else return res.json();
+        }).then(data => {
+            setDepartments(data)
+        });
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+
+    const deleteDepartment = async (id) => {
+        await fetch(`http://localhost:8080/api/departments/${id}`, {
+            method: 'DELETE',
+        }).then(res => {
+            if (res.ok) fetchData();
+            else console.log(res)
+        })
+    }
+
 
     return (
         <Box sx={{
@@ -80,15 +107,15 @@ const DepartmentPageTab = () => {
                         {
                             Departments.map((e) => {
 
-                                return <TableRow key={e} sx={{
+                                return <TableRow key={e.departmentName} sx={{
                                     border: 1,
                                     borderColor: '#E0E0E0'
                                 }}>
-                                    <TableCell sx={{
+                                    <TableCell key={e.departmentName} sx={{
                                         borderBottom: 'none',
                                         display: 'flex',
                                         justifyContent: 'space-between'
-                                    }}>{e} <DeleteIcon />
+                                    }}>{e.departmentName} <IconButton onClick={() => deleteDepartment(e._id)}><DeleteIcon /></IconButton>
                                     </TableCell>
                                 </TableRow>
                             })

@@ -93,7 +93,7 @@ const HomePageTab = () => {
                 </FormControl>
 
             </Box>
-            <Grid2 container spacing={5} sx={{
+            <Grid2 container spacing={3} sx={{
                 marginTop: 5,
             }}>
                 {courses?.map(value => {

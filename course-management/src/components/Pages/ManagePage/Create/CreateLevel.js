@@ -1,19 +1,39 @@
 import { Button, IconButton, MenuItem, Select, Table, TableBody, TableCell, TableRow, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Navbar from "../../../Navbar/Navbar"
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from "react-router-dom";
+
 
 const CreateLevel = () => {
 
 
     const navigate = useNavigate();
 
-    const [skills, setSkills] = useState(['JS', 'c++']);
+
+
+    const [name, setName] = useState();
+    const [skills, setSkills] = useState([]);
 
 
     const [skillList, setSkillList] = useState(['A', 'B']);
+
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            await fetch('http://localhost:8080/api/skills', {
+                method: 'GET'
+            }).then(res => res.json()).then(data => {
+                setSkillList(data)
+            });
+        }
+        fetchData();
+    }, [])
+
+
+
 
     const handleClick = (data) => {
         setSkills(prev => {
@@ -30,8 +50,23 @@ const CreateLevel = () => {
         }
     }
 
-    const sendSkill = () => {
+    const addName = (event) => {
+        setName(event.target.value)
+    }
 
+    const sendSubmit = async () => {
+        console.log(name)
+        console.log(skills)
+        await fetch('http://localhost:8080/api/addLevel', {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({
+                'levelName': name,
+                'skills': skills,
+            }).then(res => {
+                console.log(res);
+            })
+        })
     }
 
 
@@ -55,7 +90,7 @@ const CreateLevel = () => {
 
             }}>
                 <Typography variant='h6' align='start'>Level name</Typography>
-                <TextField placeholder="level name" fullWidth></TextField>
+                <TextField placeholder="level name" onChange={addName} fullWidth></TextField>
             </Box>
             <Box sx={{
                 width: '80vw',
@@ -91,7 +126,7 @@ const CreateLevel = () => {
                 }}>
                     <Select placeholder='Choose skill' onChange={addSkill} fullWidth>
                         {skillList?.map(e => {
-                            return <MenuItem value={e} key={e} >{e}</MenuItem>
+                            return <MenuItem value={e.skillName} key={e.skillName} >{e.skillName}</MenuItem>
                         })}
                     </Select>
                 </Box>
@@ -104,7 +139,7 @@ const CreateLevel = () => {
                     <Button variant="contained" size="medium" onClick={goBack} sx={{
                         marginRight: 4,
                     }}>Cancel</Button>
-                    <Button variant="contained" size="medium" onClick={sendSkill}>Submit</Button>
+                    <Button variant="contained" size="medium" onClick={sendSubmit}>Submit</Button>
                 </Box>
             </Box>
 

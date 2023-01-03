@@ -1,10 +1,12 @@
 package com.example.demo.dto;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.example.demo.model.levelModel;
 import com.example.demo.model.userCourseModel;
 
 @Document(collection = "User")
@@ -16,13 +18,26 @@ public class userResponseDto {
 	private String role;
 	private String name;
 	private List<userCourseResponseDto> courses;
-
+	private Date DOB;
+	private levelModel level;
+	private String email;
 	public userResponseDto(String userName, String password) {
 		super();
 		this.userName = userName;
 		this.password = password;
 	}
-	
+	public userResponseDto(String _id, String userName, Date dOB, levelModel level, String email, String role, String name,
+			List<userCourseResponseDto> courses) {
+		super();
+		this._id = _id;
+		this.userName = userName;
+		DOB = dOB;
+		this.level = level;
+		this.email = email;
+		this.role = role;
+		this.name = name;
+		this.courses = courses;
+	}
 	public userResponseDto(String userName, String password, String role) {
 		super();
 		this.userName = userName;
@@ -98,6 +113,30 @@ public class userResponseDto {
 
 	public void setCourses(List<userCourseResponseDto> courses) {
 		this.courses = courses;
+	}
+
+	public Date getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(Date dOB) {
+		DOB = dOB;
+	}
+
+	public levelModel getLevel() {
+		return level;
+	}
+
+	public void setLevel(levelModel level) {
+		this.level = level;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
 

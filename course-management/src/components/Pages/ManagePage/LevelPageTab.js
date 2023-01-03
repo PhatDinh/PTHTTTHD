@@ -3,7 +3,7 @@ import { Box } from "@mui/system"
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const LevelPageTab = () => {
 
-    const [Levels, setLevels] = useState(['Dev senior', 'Dev junior', 'Dev', 'Intern'])
+    const [levels, setLevels] = useState([])
 
 
 
@@ -19,6 +19,28 @@ const LevelPageTab = () => {
 
     const handleCreate = () => {
         navigate('/create-level')
+    }
+
+    const fetchData = async () => {
+        await fetch('http://localhost:8080/api/levels', {
+            method: 'GET'
+        }).then(res => res.json()).then(data => {
+            setLevels(data)
+        });
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+
+    const deleteLevel = async (id) => {
+        await fetch(`http://localhost:8080/api/levels/${id}`, {
+            method: 'DELETE',
+        }).then(res => {
+            if (res.ok) fetchData();
+            else console.log(res)
+        })
     }
 
 
@@ -81,9 +103,9 @@ const LevelPageTab = () => {
                     </TableHead>
                     <TableBody>
                         {
-                            Levels.map((e) => {
+                            levels.map((e) => {
 
-                                return <TableRow key={e} sx={{
+                                return <TableRow key={e.levelName} sx={{
                                     border: 1,
                                     borderColor: '#E0E0E0'
                                 }}>
@@ -91,7 +113,7 @@ const LevelPageTab = () => {
                                         borderBottom: 'none',
                                         display: 'flex',
                                         justifyContent: 'space-between'
-                                    }}>{e} <DeleteIcon />
+                                    }}>{e.levelName} <IconButton onClick={() => deleteLevel(e._id)}><DeleteIcon /> </IconButton>
                                     </TableCell>
                                 </TableRow>
                             })

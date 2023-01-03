@@ -1,6 +1,10 @@
 package com.example.demo.dto;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.core.mapping.DBRef;
+
+import com.example.demo.model.skillModel;
 
 public class userCourseResponseDto {
 	@DBRef
@@ -8,21 +12,21 @@ public class userCourseResponseDto {
 	private String status;
 	private Number score;
 	private String courseName;
-	private String trainingSkill;
-	public userCourseResponseDto(String status, Number score, String courseName, String trainingSkill) {
+	private skillModel skill;
+	public userCourseResponseDto(String status, Number score, String courseName, skillModel skill) {
 		super();
 		this.status = status;
 		this.score = score;
 		this.courseName = courseName;
-		this.trainingSkill = trainingSkill;
+		this.skill = skill;
 	}
-	public userCourseResponseDto(String _id, String status, Number score, String courseName, String trainingSkill) {
+	public userCourseResponseDto(String _id, String status, Number score, String courseName, skillModel skill) {
 		super();
 		this._id = _id;
 		this.status = status;
 		this.score = score;
 		this.courseName = courseName;
-		this.trainingSkill = trainingSkill;
+		this.skill = skill;
 	}
 	public userCourseResponseDto() {
 		super();
@@ -51,12 +55,10 @@ public class userCourseResponseDto {
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
-	public String getTrainingSkill() {
-		return trainingSkill;
+	public skillModel getSkill() {
+		return skill;
 	}
-	public void setTrainingSkill(String trainingSkill) {
-		this.trainingSkill = trainingSkill;
+	public void setSkill(skillModel skill) {
+		this.skill = skill;
 	}
-	
-	
 }

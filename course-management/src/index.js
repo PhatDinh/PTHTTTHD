@@ -42,7 +42,7 @@ root.render(
       <Route path="/addEssay" element={<AddEssay />} />
       <Route path="/choiceQuiz" element={<ChoicePage />} />
       <Route path="/essayQuiz" element={<EssayPage />} />
-      <Route path="/manage" element={<ManagePage />} />
+      <Route path="/manager" element={<ManagePage />} />
       <Route path="/create-level" element={<CreateLevel />} />
       <Route path="/create-department" element={<CreateDepartment />} />
       <Route path="/admin" element={<AdminPage />} />

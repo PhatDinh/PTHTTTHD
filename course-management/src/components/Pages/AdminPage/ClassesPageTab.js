@@ -6,7 +6,7 @@ import { Box } from "@mui/system"
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 
 const ClassesPageTab = () => {
 
-    const [classes, setClasses] = useState(['Dev senior', 'Dev junior', 'Dev', 'Intern'])
+    const [classes, setClasses] = useState([])
 
 
 
@@ -23,6 +23,22 @@ const ClassesPageTab = () => {
     const handleCreate = () => {
         navigate('/create-class')
     }
+
+    const fetchData = async () => {
+        await fetch('http://localhost:8080/api/classes', {
+            method: 'GET'
+        }).then(res => {
+            if (!res.ok) throw new Error(res.status);
+            else return res.json();
+        }).then(data => {
+            setClasses(data)
+        });
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, [])
+
 
 
     return (
@@ -79,12 +95,7 @@ const ClassesPageTab = () => {
                             }}>
                                 NAME
                             </TableCell>
-                            <TableCell sx={{
-                                borderBottom: 'none',
-                                background: '#F4F5FF'
-                            }}>
-                                STATUS
-                            </TableCell>
+
                             <TableCell sx={{
                                 borderBottom: 'none',
                                 background: '#F4F5FF'
@@ -103,11 +114,15 @@ const ClassesPageTab = () => {
                                     borderColor: '#E0E0E0'
                                 }}>
                                     <TableCell sx={{
-                                        borderBottom: 'none',
-                                        display: 'flex',
-                                        justifyContent: 'space-between'
-                                    }}>{e}
+                                        borderBottom: 'none'
+                                    }}>{e.className}
                                     </TableCell>
+                                    <TableCell sx={{
+                                        borderBottom: 'none',
+                                    }}>{e.method}
+                                    </TableCell>
+
+
                                 </TableRow>
                             })
                         }

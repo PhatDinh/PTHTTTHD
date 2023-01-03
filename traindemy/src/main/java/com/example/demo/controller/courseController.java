@@ -49,10 +49,9 @@ public class courseController {
 		courseModel newCourse = courseRepo.save(
 				new courseModel(
 						course.getCourseName(),
-						course.getRoom(),
-						course.getPassword(),
 						course.getDescription(),
-						course.getTrainingSkill(),
+						course.getSkill(),
+						course.getSkillId(),
 						course.getTarget(),
 						sessionAr,
 						course.getAuthor()
@@ -62,15 +61,23 @@ public class courseController {
 	}
 	
 	@GetMapping("/courses")
-	public ResponseEntity<List<courseModel>> courseListByTrainer(@RequestParam(required = false) String trainerId ) {
+	public ResponseEntity<List<courseModel>> courseList(
+			@RequestParam(required = false) String trainerId,
+			@RequestParam(required = false) List<String> skillIds
+			) {
 		try {
 			List<courseModel> courseList = new ArrayList<courseModel>();
 			Logger log = LoggerFactory.getLogger(courseController.class);
 			log.info(trainerId);
-			if(trainerId == null) {
+			if(trainerId == null && skillIds == null) {
 				courseRepo.findAll().forEach(courseList::add);
 			} else {
-				courseList = courseRepo.findByAuthor(trainerId);
+				if(skillIds == null) {					
+					courseList = courseRepo.findByAuthor(trainerId);
+				}
+				if(trainerId == null) {
+					courseList = courseRepo.findBySkillIds(skillIds);
+				}
 			}
 		if (courseList.isEmpty()) {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
