@@ -1,4 +1,4 @@
-import { Divider, FormControl, Grid, InputAdornment, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material"
+import { autocompleteClasses, Divider, FormControl, Grid, InputAdornment, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material"
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { Box } from "@mui/system"
 import { useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 
 
-const HomePageTab = () => {
+const CoursePageTab = () => {
 
     const [courses, setCourses] = useState();
 
@@ -39,7 +39,8 @@ const HomePageTab = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        textAlign: 'center'
+        textAlign: 'center',
+
     }}>
         <Box sx={{
             paddingLeft: 15
@@ -51,7 +52,7 @@ const HomePageTab = () => {
                 fontSize: '28px',
                 lineHeight: '33px',
                 marginTop: 10,
-                marginBottom: 3
+                marginBottom: 3,
             }}>ALL COURSES - SY2020-2021</Typography>
             <Divider light variant="inset" />
             <Box sx={{
@@ -93,12 +94,12 @@ const HomePageTab = () => {
                 </FormControl>
 
             </Box>
-            <Grid2 container spacing={5} sx={{
-                marginTop: 5,
+            <Grid2 container spacing={3} sx={{
+                marginTop: 5
             }}>
                 {courses?.map(value => {
                     return <Grid2 xs={4} sx={{
-                    }}><CourseCard courseName={value.courseName} room={value.room} description={value.description} style={{
+                    }}><CourseCard courseName={value.courseName} room={value.room} description={value.description} id={value._id} style={{
                     }} /></Grid2>
                 })}
             </Grid2>
@@ -107,4 +108,4 @@ const HomePageTab = () => {
     </Box>
 }
 
-export default HomePageTab
+export default CoursePageTab

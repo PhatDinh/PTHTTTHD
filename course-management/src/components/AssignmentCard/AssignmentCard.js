@@ -2,11 +2,15 @@ import './AssignmentCard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
 const AssignmentCard = () => {
 
     const navigator = useNavigate();
+
+
+
 
     function handleQuiz() {
         navigator('/choiceQuiz')

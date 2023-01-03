@@ -1,9 +1,10 @@
-import { IconButton, Input, InputAdornment, InputBase, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField } from "@mui/material"
+import { IconButton, Input, InputAdornment, InputBase, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Button } from "@mui/material"
 import { Box } from "@mui/system"
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -11,6 +12,13 @@ import { useState } from "react";
 const DepartmentPageTab = () => {
 
     const [Departments, setDepartments] = useState(['Accountant', 'Dev', 'HR', 'Optimize'])
+
+    const navigate = useNavigate();
+
+
+    const handleClick = () => {
+        navigate('/create-department');
+    }
 
     return (
         <Box sx={{
@@ -20,19 +28,32 @@ const DepartmentPageTab = () => {
             flexDirection: 'column'
         }}>
             <Box sx={{
-                alignSelf: 'start',
                 marginTop: 5,
                 marginLeft: 40,
-                marginBottom: 5
+                marginBottom: 5,
+                alignSelf: 'start',
+                display: 'flex',
+                justifyContent: 'space-between',
+                width: '65vw'
             }}>
-                <TextField id="outlined-basic" variant="outlined" placeholder='name ' InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">
-                            <SearchIcon />
-                        </InputAdornment>
+                <Box>
+                    <TextField id="outlined-basic" variant="outlined" placeholder='employee name' InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">
+                                <SearchIcon />
+                            </InputAdornment>
 
-                    ),
-                }} />
+                        ),
+                    }} />
+                </Box>
+
+                <Box sx={{
+                    alignSelf: 'center',
+
+                }}>
+                    <Button variant='contained' size='medium' onClick={handleClick} >Create Department</Button>
+                </Box>
+
 
             </Box>
             <TableContainer sx={{
