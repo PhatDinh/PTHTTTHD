@@ -34,6 +34,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/homepage" element={<Homepage />} />
         <Route path="/Teacher" element={<TeacherPage />} />
         <Route path="/Profile" element={<ProfilePage />} />
         <Route path="/AddCourse" element={<AddCoursePage />} />

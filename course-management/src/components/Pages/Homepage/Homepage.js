@@ -31,7 +31,9 @@ const Homepage = () => {
                     'Content-type': 'application/json'
                 },
             }
-            ).then(res => res.json()).then(data => setCourses(data));
+            ).then(res => res.json()).then(data => {
+              console.log(data);
+              setCourses(data)});
 
         }
 
