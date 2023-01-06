@@ -2,9 +2,11 @@ import React from "react";
 import Navbar from "../../Navbar/Navbar";
 import NavAssess from "../../NavAssess/NavAssess";
 import StepButton from "../../StepButton/StepButton";
-import { useState } from "react";
+import { useEffect,useState } from "react";
 import "./AddEssay.css";
 const AddEssay = () => {
+  
+  
   // Initialize state for the questions and the selected question
   const [questions, setQuestions] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
@@ -32,6 +34,25 @@ const AddEssay = () => {
   const selectQuestion = (question) => {
     setSelectedQuestion(question);
   };
+  const createQuestionButton = async () => {
+    try {
+      const res = await fetch('http://localhost:8080/api/assignments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          'question':questions
+        })
+      });
+      if (!res.ok) throw new Error(res.status);
+  
+      setQuestions([...questions]);
+    } catch (error) {
+      console.error(error);
+      alert("An error occurred while creating the question. Please try again later.");
+    }
+  }
   return (
     <div className="essay-container">
       <Navbar title={"Essay"}></Navbar>
@@ -52,7 +73,7 @@ const AddEssay = () => {
             <div className="create-ques-btn">
               <label htmlFor="question">Enter a question:</label>
               <input type="text" name="question" id="question" />
-              <button type="submit">+</button>
+              <button type="submit" onClick = {() => createQuestionButton(questions)}>+</button>
             </div>
             <div className="block-selected-question">
               {selectedQuestion && (
@@ -70,14 +91,16 @@ const AddEssay = () => {
         <div className="list-container">
         <div key={index} className="title-add-course2">
             <div onClick={() => selectQuestion(question)}>{question}
+            
             </div>
+            
           </div>
-
           <div className="icon-edit-rmv">
           <a href="#" className="fa fa-trash" onClick={() => deleteQuestion(index)} ></a>
             <a href="#" className="fa fa-pencil " onClick={() => editQuestion(index, prompt("Enter the new question:")) }></a>
           </div>
         </div>
+          
         ))}
       </div>
     </div>

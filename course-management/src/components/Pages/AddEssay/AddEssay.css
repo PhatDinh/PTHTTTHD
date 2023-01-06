@@ -65,7 +65,7 @@ body{
     display: flex;
 }
 .icon-edit-rmv{
-    margin-right:800px;
+    margin-right:1000px;
     padding:11px;
     background-color:white;
 }
@@ -77,8 +77,9 @@ body{
     display: flex;
     border-radius: 10px;
     align-items: center;
-    justify-content: center;
-
+    justify-content:center;
+    
+    
 }
 .icon-edit-rmv a {
     text-decoration: none;
