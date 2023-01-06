@@ -41,23 +41,44 @@ const Homepage = () => {
 
 
     return (
-        <div className="homepage">
-            <Navbar title={'COURSE'} />
+      <div className="homepage">
+        <Navbar title={'COURSE'} />
 
-            <div className='homepage-header'>
-                <h2 className="homepage-title">ALL COURSES - SY2020-2021</h2>
-                {localStorage.getItem('role') == 'teacher' && <button className="homepage-btn" onClick={() => handleClick('/AddCourse')}>Create Course</button>}
-            </div>
-            <div className="homepage-content">
-                {
-                    courses?.map(value => {
-                        return <CourseCard courseName={value.courseName} room={value.room} description={value.description} />
-                    })
-                }
-
-            </div>
+        <div className="homepage-header">
+          <h2 className="homepage-title">ALL COURSES - SY2020-2021</h2>
+          {localStorage.getItem('role') == 'teacher' && (
+            <button
+              className="homepage-btn"
+              onClick={() => handleClick('/AddCourse')}
+            >
+              Create Course
+            </button>
+          )}
         </div>
-    )
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'center',
+          }}
+        >
+          {courses?.map((value) => {
+            return (
+              <Box
+                sx={{
+                  marginRight: '20px',
+                }}
+              >
+                <CourseCard
+                  courseName={value.courseName}
+                  description={value.description}
+                />
+              </Box>
+            );
+          })}
+        </Box>
+      </div>
+    );
 }
 
 

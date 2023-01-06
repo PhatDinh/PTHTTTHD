@@ -26,31 +26,35 @@ import CreateDepartment from './components/Pages/ManagePage/Create/CreateDepartm
 import AdminPage from './components/Pages/AdminPage/AdminPage';
 import UpdateCoursePage from './components/Pages/UpdateCourse/UpdateCoursePage';
 import CreateClass from './components/Pages/ManagePage/Create/CreateClass';
+import CoursePageTab from './components/Pages/AdminPage/CoursePageTab';
+import TeacherPage from './components/Pages/Teacher/TeacherPage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/Homepage" element={<Homepage />} />
-      <Route path="/Profile" element={<ProfilePage />} />
-      <Route path="/AddCourse" element={<AddCoursePage />} />
-      <Route path="/CourseDetail" element={<CourseDetail />} />
-      <Route path="/Document" element={<DocumentPage />} />
-      <Route path="/AddSession" element={<CreateSession />} />
-      <Route path="/Assignment" element={<AssignmentsPage />} />
-      <Route path="/postAsg" element={<PostAssignment />} />
-      <Route path="/addQues" element={<AddingQuestion />} />
-      <Route path="/addEssay" element={<AddEssay />} />
-      <Route path="/choiceQuiz" element={<ChoicePage />} />
-      <Route path="/essayQuiz" element={<EssayPage />} />
-      <Route path="/manager" element={<ManagePage />} />
-      <Route path="/create-level" element={<CreateLevel />} />
-      <Route path="/create-department" element={<CreateDepartment />} />
-      <Route path="/create-class" element={<CreateClass/>}/>
-      <Route path="/admin" element={<AdminPage />} />
-      <Route path="/updateCourse" element={<UpdateCoursePage />} />
-    </Routes>
-  </BrowserRouter>
+  <div style={{ backgroundColor: 'white', height: '100%' }}>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/Teacher" element={<TeacherPage />} />
+        <Route path="/Profile" element={<ProfilePage />} />
+        <Route path="/AddCourse" element={<AddCoursePage />} />
+        <Route path="/CourseDetail" element={<CourseDetail />} />
+        <Route path="/Document" element={<DocumentPage />} />
+        <Route path="/AddSession" element={<CreateSession />} />
+        <Route path="/Assignment" element={<AssignmentsPage />} />
+        <Route path="/postAsg" element={<PostAssignment />} />
+        <Route path="/addQues" element={<AddingQuestion />} />
+        <Route path="/addEssay" element={<AddEssay />} />
+        <Route path="/choiceQuiz" element={<ChoicePage />} />
+        <Route path="/essayQuiz" element={<EssayPage />} />
+        <Route path="/manager" element={<ManagePage />} />
+        <Route path="/create-level" element={<CreateLevel />} />
+        <Route path="/create-department" element={<CreateDepartment />} />
+        <Route path="/create-class" element={<CreateClass />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/updateCourse" element={<UpdateCoursePage />} />
+      </Routes>
+    </BrowserRouter>
+  </div>
 );
 
 // If you want to start measuring performance in your app, pass a function
