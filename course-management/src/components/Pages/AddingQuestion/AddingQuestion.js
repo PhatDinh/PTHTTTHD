@@ -4,10 +4,12 @@ import NavAssess from "../../NavAssess/NavAssess";
 import StepButton from "../../StepButton/StepButton";
 import { useState } from "react";
 import "./Adding Question.css";
+import { useNavigate } from 'react-router-dom';
 const AddingQuestion = () => {
   const [questions, setQuestions] = useState([
-    { question: "", answers: ["", "", "", ""] },
+    { question: '', answers: ['', '', '', ''] },
   ]);
+  const navigate = useNavigate();
   const [showResults, setShowResults] = useState(false);
 
   function handleQuestionChange(event, index) {
@@ -25,7 +27,7 @@ const AddingQuestion = () => {
   }
 
   function handleAddQuestion() {
-    setQuestions([...questions, { question: "", answers: ["", "", "", ""] }]);
+    setQuestions([...questions, { question: '', answers: ['', '', '', ''] }]);
   }
 
   function handleRemoveQuestion(index) {
@@ -38,9 +40,27 @@ const AddingQuestion = () => {
     setShowResults(true);
   }
 
+  function handleAdd() {
+    const data = fetch('http://localhost:8080/api/addAssignment', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({}),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error(res.status);
+        navigate(-1);
+      })
+      .then((data) => {
+        console.log(data);
+        navigate(-1);
+      });
+  }
+
   return (
     <div className="add-question-container">
-      <Navbar title={"QUESTION"}></Navbar>
+      <Navbar title={'QUESTION'}></Navbar>
       <NavAssess />
       <StepButton>
         <div className="Step2">STEP 2: Adding Questions</div>
@@ -52,7 +72,7 @@ const AddingQuestion = () => {
             <label>
               <b>Question {index + 1}:</b>
               <input
-                style={{ width: "1150px" }}
+                style={{ width: '1150px' }}
                 type="text"
                 value={question.question}
                 onChange={(event) => handleQuestionChange(event, index)}
@@ -64,7 +84,7 @@ const AddingQuestion = () => {
                 Answer {answerIndex + 1}:
                 <input
                   type="text"
-                  style={{ marginLeft: "20px" }}
+                  style={{ marginLeft: '20px' }}
                   value={answer}
                   onChange={(event) =>
                     handleAnswerChange(event, index, answerIndex)
@@ -110,6 +130,14 @@ const AddingQuestion = () => {
             ))}
           </div>
         )}
+      </div>
+      <div className="title-add-session-btn">
+        <button className="cancel-btn" onClick={() => navigate(-1)}>
+          Cancel
+        </button>
+        <button className="create-btn" onClick={() => handleAdd()}>
+          Add
+        </button>
       </div>
     </div>
   );
