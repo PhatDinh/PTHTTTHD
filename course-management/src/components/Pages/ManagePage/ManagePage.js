@@ -6,6 +6,7 @@ import DepartmentPageTab from "./DepartmentPageTab"
 import HomePageTab from "./HomePageTab"
 import LevelPageTab from "./LevelPageTab"
 import SkillPageTab from "./SkillPageTab"
+import TraineePageTab from "./TraineePageTab"
 
 
 
@@ -36,6 +37,7 @@ const ManagePage = () => {
                 {tabIndex === 1 && <SkillPageTab />}
                 {tabIndex === 2 && <LevelPageTab />}
                 {tabIndex == 3 && <DepartmentPageTab />}
+                {tabIndex == 4 && <TraineePageTab/>}
             </Box>
         </Box>
     )
