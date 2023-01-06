@@ -25,6 +25,7 @@ import CreateLevel from './components/Pages/ManagePage/Create/CreateLevel';
 import CreateDepartment from './components/Pages/ManagePage/Create/CreateDepartment';
 import AdminPage from './components/Pages/AdminPage/AdminPage';
 import UpdateCoursePage from './components/Pages/UpdateCourse/UpdateCoursePage';
+import CreateClass from './components/Pages/ManagePage/Create/CreateClass';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
@@ -45,6 +46,7 @@ root.render(
       <Route path="/manager" element={<ManagePage />} />
       <Route path="/create-level" element={<CreateLevel />} />
       <Route path="/create-department" element={<CreateDepartment />} />
+      <Route path="/create-class" element={<CreateClass/>}/>
       <Route path="/admin" element={<AdminPage />} />
       <Route path="/updateCourse" element={<UpdateCoursePage />} />
     </Routes>
