@@ -42,7 +42,7 @@ const CourseDetail = () => {
                 </Box>
                 <Box sx={{}}>
                     {tabIndex == 0 && <CourseInfomationTab courseId={courseId} />}
-                    {tabIndex == 1 && <StudentsTab />}
+                    {tabIndex == 1 && <StudentsTab courseId={courseId} />}
                 </Box></Box>)
     }
 
@@ -60,7 +60,7 @@ const CourseDetail = () => {
     return (
         <Box sx={{ backgroundColor: 'white', minHeight: '100vh' }}>
             <Navbar title='Course Detail'></Navbar>
-            {localStorage.role == 'student' ? <CourseInfomationTab courseId={courseId}/> : <TabController />}
+            {localStorage.role == 'student' ? <CourseInfomationTab courseId={courseId} /> : <TabController />}
 
         </Box>
     )

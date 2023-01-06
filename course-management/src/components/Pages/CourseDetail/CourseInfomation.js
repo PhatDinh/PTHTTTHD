@@ -1,7 +1,8 @@
-import { Button, Typography } from "@mui/material"
+import { Button, Table, TableBody, TableCell, Typography, TableRow, IconButton } from "@mui/material"
 import { Box } from "@mui/system"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 
 
@@ -19,6 +20,12 @@ const CourseInfomationTab = (props) => {
 
     const toAssignment = () => {
         navigate('/assignment')
+    }
+
+    const toSession = (session) =>{
+        navigate('/sessionDetail',{
+            state: {'session' : session }
+        })
     }
 
     useEffect(() => {
@@ -150,9 +157,26 @@ const CourseInfomationTab = (props) => {
                     borderRadius: '20px',
                     width: '60vw',
                     backgroundColor: 'white',
-                    padding: 5
                 }}>
-
+                    <Table>
+                        <TableBody>
+                            {
+                                course.sessions?.map((data, index) => {
+                                    return <TableRow key={data} sx={{
+                                        border: 1,
+                                        borderColor: '#E0E0E0'
+                                    }}>
+                                        <TableCell sx={{
+                                            borderBottom: 'none',
+                                            display: 'flex',
+                                            justifyContent: 'space-between'
+                                        }}><Typography>{data.sessionName}</Typography> <IconButton onClick={() => toSession(data)}><ModeEditIcon /></IconButton>
+                                        </TableCell>
+                                    </TableRow>
+                                })
+                            }
+                        </TableBody>
+                    </Table>
                 </Box>
             </Box>
         </Box>

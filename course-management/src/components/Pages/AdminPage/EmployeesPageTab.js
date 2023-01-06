@@ -22,13 +22,20 @@ const EmployeesPageTab = () => {
 
 
     const fetchData = async () => {
-        await fetch('http://localhost:8080/api/Employees', {
+        await fetch('http://localhost:8080/api/users', {
             method: 'GET'
         }).then(res => {
             if (!res.ok) throw new Error(res.status);
             else return res.json();
         }).then(data => {
-            setEmployees(data)
+            console.log(data)
+            data.map(e => {
+                if (e.role != 'student' && e.role != 'admin') {
+                    setEmployees(prev => {
+                        return [...prev, e]
+                    })
+                }
+            })
         });
     }
 
@@ -65,7 +72,7 @@ const EmployeesPageTab = () => {
                     }} />
                 </Box>
 
-                
+
 
 
             </Box>
@@ -92,7 +99,13 @@ const EmployeesPageTab = () => {
                                 borderBottom: 'none',
                                 background: '#F4F5FF'
                             }}>
-                                METHOD
+                                Role
+                            </TableCell>
+                            <TableCell sx={{
+                                borderBottom: 'none',
+                                background: '#F4F5FF'
+                            }}>
+
                             </TableCell>
 
                         </TableRow>
@@ -107,11 +120,11 @@ const EmployeesPageTab = () => {
                                 }}>
                                     <TableCell sx={{
                                         borderBottom: 'none'
-                                    }}>{e.className}
+                                    }}>{e.name}
                                     </TableCell>
                                     <TableCell sx={{
                                         borderBottom: 'none',
-                                    }}>{e.method}
+                                    }}>{e.role}
                                     </TableCell>
 
 

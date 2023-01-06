@@ -28,6 +28,7 @@ import UpdateCoursePage from './components/Pages/UpdateCourse/UpdateCoursePage';
 import CreateClass from './components/Pages/ManagePage/Create/CreateClass';
 import CoursePageTab from './components/Pages/AdminPage/CoursePageTab';
 import TeacherPage from './components/Pages/Teacher/TeacherPage';
+import SessionDetail from './components/Pages/CourseDetail/SessionDetail';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div style={{ backgroundColor: 'white', height: '100%' }}>
@@ -39,6 +40,7 @@ root.render(
         <Route path="/Profile" element={<ProfilePage />} />
         <Route path="/AddCourse" element={<AddCoursePage />} />
         <Route path="/CourseDetail" element={<CourseDetail />} />
+        <Route path="/SessionDetail" element={<SessionDetail/>}/>
         <Route path="/Document" element={<DocumentPage />} />
         <Route path="/AddSession" element={<CreateSession />} />
         <Route path="/Assignment" element={<AssignmentsPage />} />

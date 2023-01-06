@@ -1,9 +1,33 @@
 import { Typography } from "@mui/material"
 import { Box } from "@mui/system"
+import { useEffect, useState } from "react"
 
 
 
-const StudentsTab = () => {
+const StudentsTab = (props) => {
+
+    const [students, setStudents] = useState();
+
+    const courseId = props.courseId
+
+    useEffect(() => {
+        const fetchData = async () => {
+            await fetch(`http://localhost:8080/api/students/courses`, {
+                method: 'GET',
+            }).then(res => res.json()).then(data => {
+                data?.map(e =>{
+                    if (e._id == courseId)
+                    {
+                        setStudents(data);
+                    }
+                })
+            });
+        }
+        fetchData();
+    }, [])
+
+
+
     return (
         <Box>
             <Box sx={{
@@ -13,7 +37,7 @@ const StudentsTab = () => {
                 marginTop: 10,
 
             }}>
-                <Typography variant='h6' align='start'>User</Typography>
+                {console.log(students)}
 
             </Box>
         </Box>

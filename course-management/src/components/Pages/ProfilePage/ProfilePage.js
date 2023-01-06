@@ -1,6 +1,8 @@
 
+import { Button } from '@mui/material';
+import { Box } from '@mui/system';
 import { useEffect } from 'react';
-import { json } from 'react-router-dom';
+import { json, Navigate, useNavigate } from 'react-router-dom';
 import avatar from '../../../images/fat.jpg';
 import Navbar from "../../Navbar/Navbar";
 import './ProfilePage.css'
@@ -9,6 +11,8 @@ import './ProfilePage.css'
 
 function ProfilePage() {
 
+
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -28,7 +32,13 @@ function ProfilePage() {
             })
         }
         fetchData();
-    } ,[])
+    }, [])
+
+
+    const handleOut = () => {
+        localStorage.clear();
+        navigate('/');
+    }
 
     return (
         <div className="profile">
@@ -45,7 +55,15 @@ function ProfilePage() {
                 <div className='profile-content'>
                     <p>Information system trainer</p>
                 </div>
+                <Box sx={{
+                    marginTop: 5
+                }}>
+                    <Button fullWidth variant="contained" onClick={handleOut} sx={{
+                        borderRadius: 2
+                    }}>LOG OUT</Button>
+                </Box>
             </div>
+
 
         </div>
     )

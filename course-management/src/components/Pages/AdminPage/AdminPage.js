@@ -4,6 +4,7 @@ import { useState } from "react"
 import Navbar from "../../Navbar/Navbar"
 import ClassesPageTab from "./ClassesPageTab"
 import CoursePageTab from "./CoursePageTab"
+import EmployeesPageTab from "./EmployeesPageTab"
 
 
 
@@ -32,6 +33,7 @@ const AdminPage = () => {
             <Box sx={{ padding: 2 }}>
                 {tabIndex == 0 && <CoursePageTab />}
                 {tabIndex == 1 && <ClassesPageTab />}
+                {tabIndex == 2 && <EmployeesPageTab />}
             </Box>
         </Box>
     )
